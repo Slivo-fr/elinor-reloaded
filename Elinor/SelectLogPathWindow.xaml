@@ -1,0 +1,16 @@
+﻿<Window x:Class="Elinor.SelectLogPathWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Select EVE log path" Height="192" Width="376"
+        Icon="/Elinor;component/Images/mainicon.png" ResizeMode="NoResize">
+  <Grid>
+    <TextBox Height="23" HorizontalAlignment="Left" Margin="12,46,0,0" Name="tbPath" VerticalAlignment="Top"
+             Width="278" />
+    <Label Content="Please select your 'marketlogs' folder" Height="28" HorizontalAlignment="Left"
+           Margin="12,12,0,0" Name="lblPath" VerticalAlignment="Top" />
+    <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="296,46,0,0" Name="btnFileSelect"
+            VerticalAlignment="Top" Width="46" Click="BtnFileSelectClick" />
+    <Button Content="Ok" Height="23" HorizontalAlignment="Left" Margin="267,118,0,0" Name="btnOk"
+            VerticalAlignment="Top" Width="75" Click="BtnOkClick" />
+    <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="186,118,0,0" Name="btnCancel"
+            VerticalAlignment="Top" Width="75" Click="BtnCancelClick" />
+  </Grid>
+</Window>
