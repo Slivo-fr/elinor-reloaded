@@ -122,7 +122,7 @@ namespace Elinor
                 {
                     return Serializer.DeSerializeObject(string.Format("profiles\\{0}.dat", profileName));
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return null;
                 }
