@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eveapi version="2">
+  <currentTime>2013-12-13 15:48:56</currentTime>
+  <result>
+    <key accessMask="268435455" type="Account" expires="">
+      <rowset name="characters" key="characterID" columns="characterID,characterName,corporationID,corporationName">
+        <row characterID="104298607" characterName="Sgt Telion" corporationID="1390846542" corporationName="Beehive Surveillance" />
+        <row characterID="1510858380" characterName="Slivo" corporationID="1390846542" corporationName="Beehive Surveillance" />
+        <row characterID="1583710008" characterName="Conseiller Slivo" corporationID="1390846542" corporationName="Beehive Surveillance" />
+      </rowset>
+    </key>
+  </result>
+  <cachedUntil>2013-12-13 15:52:01</cachedUntil>
+</eveapi>
