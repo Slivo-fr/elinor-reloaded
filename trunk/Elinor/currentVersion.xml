@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<elinor>
+	<version>1.1.2.0</version>
+	<url>http://code.google.com/p/elinor/downloads/list</url>
+</elinor>
+
+<!--THIS IS HOSTED ON MY SERVER TO CHECK FOR UPDATES.
+    THE URL TO THIS FILE THAT IS CHECKED AT STARTUP IS
+    http://cylide.de/elinor/currentVersion.xml
+-->

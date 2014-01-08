@@ -1,0 +1,28 @@
+﻿<Window x:Class="Elinor.AboutWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="About Elinor" Height="242" Width="439"
+        Icon="/Elinor;component/Images/mainicon.png" ResizeMode="NoResize" KeyDown="WindowKeyDown">
+  <Grid>
+    <Image Height="100" HorizontalAlignment="Left" Margin="12,12,0,0" Name="image1" Stretch="Fill"
+           VerticalAlignment="Top" Width="100" Source="/Elinor;component/Images/mainicon.png" />
+    <Label Content="Elinor" Height="auto" HorizontalAlignment="Left" Margin="118,12,0,0" Name="label1"
+           VerticalAlignment="Top" FontWeight="Bold" FontSize="32" Width="220" FontFamily="Consolas" />
+    <Label Content="Automatic margin calculator for Eve Online" Height="28" Margin="121,50,42,0" Name="label2"
+           VerticalAlignment="Top" FontWeight="Bold" />
+    <Label Content="Version" Height="28" HorizontalAlignment="Left" Margin="12,133,0,0" Name="label3"
+           VerticalAlignment="Top" />
+    <Label Content="Contact" Height="28" HorizontalAlignment="Left" Margin="12,148,0,0" Name="label4"
+           VerticalAlignment="Top" />
+    <Label Content="Slivo" Height="28" HorizontalAlignment="Left" Margin="69,148,0,0" Name="lblChar"
+           MouseEnter="LblCharMouseEnter" MouseDown="LblCharMouseDown" ToolTip="Click to copy" VerticalAlignment="Top"
+           Foreground="Blue" Cursor="Hand" MouseLeave="LblCharMouseLeave" Panel.ZIndex="1" />
+    <Label Content="1.1.0.0" Height="28" HorizontalAlignment="Left" Margin="69,133,0,0" Name="lblVersion"
+           VerticalAlignment="Top" />
+    <Separator Height="5" HorizontalAlignment="Left" Margin="12,122,0,0" Name="separator1" VerticalAlignment="Top"
+               Width="393" />
+    <Label Content="Thanks to Cuhlen for EVE.Net" Height="28" HorizontalAlignment="Left" Margin="12,163,0,0"
+           Name="label5" VerticalAlignment="Top" FontStyle="Italic" />
+    <Label Content="Beta" Height="28" HorizontalAlignment="Left" Margin="118,133,0,0" Name="label6"
+           VerticalAlignment="Top" FontStyle="Italic" />
+        <TextBlock Height="37" HorizontalAlignment="Left" Margin="127,75,0,0" Name="textBlock1" VerticalAlignment="Top" Width="254">All credit goes to Virppi Jouhinen, <LineBreak/>original author of Elinor.</TextBlock>
+    </Grid>
+</Window>
