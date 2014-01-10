@@ -58,14 +58,15 @@ namespace Elinor
 
                         if (newVersion > currentVersion)
                         {
-                            if (DialogResult.Yes ==
+                            // TODO: Manage new version check
+                            /*if (DialogResult.Yes ==
                                 MessageBox.Show("There's a new version of Elinor available, do you want to download it?",
                                     "New version available",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question))
                             {
                                 Process.Start(url);
-                            }
+                            }*/
                         }
                     }
                 }
