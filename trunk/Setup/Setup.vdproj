@@ -27,20 +27,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DBE32846A518C62C896ACAE87CD6213D"
+        "MsmKey" = "8:_6323117E5649172BF1670D38DC9C46DA"
         "OwnerKey" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DBE32846A518C62C896ACAE87CD6213D"
+        "OwnerKey" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
+        "OwnerKey" = "8:_6323117E5649172BF1670D38DC9C46DA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -88,7 +88,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\elinor.msi"
+        "OutputFilename" = "8:Release\\elinor-reloaded.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -168,13 +168,18 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DBE32846A518C62C896ACAE87CD6213D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6323117E5649172BF1670D38DC9C46DA"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EVE.Net, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_6323117E5649172BF1670D38DC9C46DA"
+                    {
+                    "Name" = "8:EVE.Net.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:EVE.Net.dll"
             "TargetName" = "8:"
@@ -245,7 +250,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_0C51678C65BA480FAD2638AC1E17F528"
                     {
-                    "Name" = "8:Elinor"
+                    "Name" = "8:Elinor reloaded"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -271,9 +276,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Elinor"
+        "ProductName" = "8:Elinor reloaded"
         "ProductCode" = "8:{628F9EC0-6408-410B-86C0-17CA7C15ECFC}"
-        "PackageCode" = "8:{415966E8-CD0C-41AA-B145-DA1757CC3C64}"
+        "PackageCode" = "8:{97DDC7DD-0961-4214-A1AB-50D8D95B3A31}"
         "UpgradeCode" = "8:{F54F50ED-FDA6-4419-B476-E665ADA1FCBC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -284,7 +289,7 @@
         "Manufacturer" = "8:Slivo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:elinor"
+        "Title" = "8:elinor reloaded"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Slivo"
         "Keywords" = "8:"
@@ -395,7 +400,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8019DB498CC54042BA2A05F975F19293"
             {
-            "Name" = "8:Elinor"
+            "Name" = "8:Elinor reloaded"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -409,7 +414,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_ECCF1FA8C1CD499A9B2370034C7DA159"
             {
-            "Name" = "8:Elinor"
+            "Name" = "8:Elinor reloaded"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
