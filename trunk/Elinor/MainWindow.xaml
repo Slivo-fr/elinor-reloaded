@@ -1,5 +1,5 @@
 ﻿<Window x:Class="Elinor.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Elinor="clr-namespace:Elinor" Title="Elinor" Height="500"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Elinor="clr-namespace:Elinor" Title="Elinor reloaded" Height="500"
         Width="525" Closed="WindowClosed" Loaded="WindowLoaded" ResizeMode="NoResize"
         Icon="/Elinor;component/Images/mainicon.png" Closing="WindowClosing">
   <Window.Resources>
