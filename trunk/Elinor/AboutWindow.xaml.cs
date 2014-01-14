@@ -12,7 +12,7 @@ namespace Elinor
     /// </summary>
     public partial class AboutWindow
     {
-        private const string Charname = "Virppi Jouhinen";
+        private const string Charname = "Slivo";
 
         public AboutWindow()
         {
