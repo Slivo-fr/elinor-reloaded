@@ -228,17 +228,6 @@
                     }
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_1118929FDF964D1BB1929D2B77362347"
-            {
-            "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:DesktopFolder"
-                "Folders"
-                {
-                }
-            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_84EE97675E924F67B51720F2B98A055E"
             {
             "Name" = "8:#1919"
@@ -278,7 +267,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Elinor reloaded"
         "ProductCode" = "8:{628F9EC0-6408-410B-86C0-17CA7C15ECFC}"
-        "PackageCode" = "8:{1CAD2BE0-4894-49AA-A50B-698678AA0F8E}"
+        "PackageCode" = "8:{07B03C30-342F-49F0-AF4F-1350ABB4BC50}"
         "UpgradeCode" = "8:{F54F50ED-FDA6-4419-B476-E665ADA1FCBC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -408,20 +397,6 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
             "Folder" = "8:_0C51678C65BA480FAD2638AC1E17F528"
-            "WorkingFolder" = "8:_1022C19006BB4A9C811CB9D8739B72B3"
-            "Icon" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_ECCF1FA8C1CD499A9B2370034C7DA159"
-            {
-            "Name" = "8:Elinor reloaded"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:32512"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
-            "Folder" = "8:_1118929FDF964D1BB1929D2B77362347"
             "WorkingFolder" = "8:_1022C19006BB4A9C811CB9D8739B72B3"
             "Icon" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
             "Feature" = "8:"
