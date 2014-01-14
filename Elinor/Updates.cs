@@ -21,7 +21,7 @@ namespace Elinor
 
                 try
                 {
-                    reader = new XmlTextReader(@"http://cylide.de/elinor/currentVersion.xml");
+                    reader = new XmlTextReader(@"http://elinor.slivo.fr/update/currentVersion.xml");
                     reader.MoveToContent();
                     var elementName = "";
                     if ((reader.NodeType == XmlNodeType.Element) &&
@@ -59,14 +59,14 @@ namespace Elinor
                         if (newVersion > currentVersion)
                         {
                             // TODO: Manage new version check
-                            /*if (DialogResult.Yes ==
+                            if (DialogResult.Yes ==
                                 MessageBox.Show("There's a new version of Elinor available, do you want to download it?",
                                     "New version available",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question))
                             {
                                 Process.Start(url);
-                            }*/
+                            }
                         }
                     }
                 }
