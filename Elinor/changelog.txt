@@ -1,0 +1,10 @@
+Elinor 1.2.0.17, 2014-01-20
+----------------------
+- Added change-log file
+- Added updating of profile using API informations used for profile creation
+- Added cost of a single buy / sell order
+- Added last used profile selection at start-up
+- Re-organized the window
+- Changed the update system to use elinor.slivo.fr
+- Removed example table
+- Removed advanced increment warning
