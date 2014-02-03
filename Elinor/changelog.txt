@@ -6,5 +6,8 @@ Elinor 1.2.0.17, 2014-01-20
 - Added last used profile selection at start-up
 - Re-organized the window
 - Changed the update system to use elinor.slivo.fr
+- Changed name to elinor-reloaded
+- Changed about window informations
 - Removed example table
 - Removed advanced increment warning
+- Removed the desktop icon at install
