@@ -344,9 +344,6 @@ namespace Elinor
 
             PopupPlacements();
 
-            Tutorial.Main = this;
-            Tutorial.ShowTutorialHint();
-
             UpdateProfiles();
 
             btnUpdate.IsChecked = Properties.Settings.Default.checkforupdates;
@@ -406,10 +403,33 @@ namespace Elinor
             UpdateBrokerFee();
         }
 
-        private void BtnDefaultClick(object sender, RoutedEventArgs e)
+        private void BtnResetCharClick(object sender, RoutedEventArgs e)
         {
-            var tSettings = new Profile {profileName = profile.profileName};
-            profile = tSettings;
+            profile.accounting = 0;
+            profile.brokerRelations = 0;
+
+            profile.corpStanding = 0;
+            profile.factionStanding = 0;
+
+            Profile.SaveSettings(profile);
+            TiSettingsGotFocus(this, null);
+        }
+
+        private void BtnResetTradeClick(object sender, RoutedEventArgs e)
+        {
+            profile.advancedStepSettings = false;
+            profile.buyPercentage = 0;
+            profile.sellPercentage = 0;
+            profile.buyThreshold = 0;
+            profile.sellThreshold = 0;
+
+            profile.marginThreshold = 0.1;
+            profile.minimumThreshold = 0.02;
+
+            Profile.SaveSettings(profile);
+            TiSettingsGotFocus(this, null); 
+            
+            profile.minimumThreshold = 0.02;
             Profile.SaveSettings(profile);
             TiSettingsGotFocus(this, null);
         }
@@ -636,7 +656,7 @@ namespace Elinor
 
         private void MiSubmitBugClick(object sender, RoutedEventArgs e)
         {
-            Process.Start(@"https://code.google.com/p/elinor/issues/list");
+            Process.Start(@"https://code.google.com/p/elinor-reloaded/issues/list");
         }
 
         private void MiSubmitFeatureClick(object sender, RoutedEventArgs e)
@@ -650,11 +670,6 @@ namespace Elinor
                                ? ClipboardTools.GetSellPrice(_sell, profile)
                                : ClipboardTools.GetBuyPrice(_buy, profile);
             ClipboardTools.SetClipboardWrapper(price);
-        }
-
-        private void BtnTutorialClick(object sender, RoutedEventArgs e)
-        {
-            Tutorial.NextTip();
         }
 
         private void CbAdvancedSettingsChecked(object sender, RoutedEventArgs e)

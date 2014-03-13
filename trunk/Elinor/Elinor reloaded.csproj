@@ -127,7 +127,6 @@
     </Compile>
     <Compile Include="Serializer.cs" />
     <Compile Include="Profile.cs" />
-    <Compile Include="Tutorial.cs" />
     <Compile Include="Updates.cs" />
     <Page Include="AboutWindow.xaml">
       <SubType>Designer</SubType>
