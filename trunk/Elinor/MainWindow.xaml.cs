@@ -275,8 +275,8 @@ namespace Elinor
         {
             Dispatcher.Invoke(new Action(delegate
             {
-                slMargin.Value = profile.marginThreshold;
-                slMinimum.Value = profile.minimumThreshold;
+                tbPreferred.Text = Convert.ToString(profile.marginThreshold * 100);
+                tbMinimum.Text = Convert.ToString(profile.minimumThreshold * 100);
 
                 tbCorpStanding.Text =
                     string.Format(
@@ -301,29 +301,8 @@ namespace Elinor
             }));
         }
 
-        private void SlMarginValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            profile.marginThreshold = slMargin.Value;
-            Dispatcher.Invoke(new Action(delegate
-            {
-                slMinimum.Maximum = slMargin.Value;
-                tbPreferred.Text =
-                    (slMargin.Value*100).ToString(CultureInfo.InvariantCulture);
-            }));
-        }
-
-        private void SlMinimumValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            profile.minimumThreshold = slMinimum.Value;
-            Dispatcher.Invoke(
-                new Action(delegate { tbMinimum.Text = (slMinimum.Value*100).ToString(CultureInfo.InvariantCulture); }));
-        }
-
         private void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            slMargin.ValueChanged += SlMarginValueChanged;
-            slMinimum.ValueChanged += SlMinimumValueChanged;
-
             tbCorpStanding.TextChanged += TbCorpStandingTextChanged;
             tbFactionStanding.TextChanged += TbFactionStandingTextChanged;
             tbCorpStanding.LostFocus += TbStandingOnLostFocus;
@@ -758,48 +737,6 @@ namespace Elinor
             }
         }
 
-        private void TbPreferredKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                double d;
-                if (double.TryParse(tbPreferred.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out d))
-                {
-                    d /= 100;
-                    if (d <= slMargin.Maximum)
-                    {
-                        slMargin.Value = d;
-                    }
-                    else
-                    {
-                        tbPreferred.Text = (slMargin.Maximum*100).ToString(CultureInfo.InvariantCulture);
-                        slMargin.Value = slMargin.Maximum;
-                    }
-                }
-            }
-        }
-
-        private void TbMinimumKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                double d;
-                if (double.TryParse(tbMinimum.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out d))
-                {
-                    d /= 100;
-                    if (d <= slMinimum.Maximum)
-                    {
-                        slMinimum.Value = d;
-                    }
-                    else
-                    {
-                        tbMinimum.Text = (slMinimum.Maximum*100).ToString(CultureInfo.InvariantCulture);
-                        slMinimum.Value = slMinimum.Maximum;
-                    }
-                }
-            }
-        }
-
         private void WindowClosing(object sender, CancelEventArgs e)
         {
             if (!_cacheCleared)
@@ -823,6 +760,44 @@ namespace Elinor
             Properties.Settings.Default.Save();
 
             if(Properties.Settings.Default.checkforupdates) Updates.CheckForUpdates();
+        }
+
+        private void TbPreferredTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (profile != null)
+            {
+
+                double d;
+
+                if (double.TryParse(tbPreferred.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out d))
+                {
+                    d /= 100;
+
+                    if (d <= 1 && d >= 0)
+                    {
+                        profile.marginThreshold = d;
+                    }
+                }
+            }
+        }
+
+        private void TbMinimumTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (profile != null)
+            {
+
+                double d;
+
+                if (double.TryParse(tbMinimum.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out d))
+                {
+                    d /= 100;
+
+                    if (d <= profile.marginThreshold && d >= 0)
+                    {
+                        profile.minimumThreshold = d;
+                    }
+                }
+            }
         }
     }
 }
