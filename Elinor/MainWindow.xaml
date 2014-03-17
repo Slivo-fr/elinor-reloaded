@@ -266,25 +266,19 @@
 
                     <Separator Height="5" Margin="12,121,12,0" Name="sprt2" VerticalAlignment="Top" Width="Auto" />
                     
-                    <GroupBox Header="Margins" Margin="12,131,12,0" Name="gbMarginsSettings" Height="112"
+                    <GroupBox Header="Margins" Margin="12,131,12,0" Name="gbMarginsSettings" Height="71"
                     VerticalAlignment="Top">
-                        <Grid>
-                            <Label Content="Preferred Margin" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0"
-                     Name="label5" VerticalAlignment="Top" Width="102" />
-                            <Slider ToolTip="The 'green' margin" Height="23" Margin="217,8,6,0" Name="slMargin"
-                      VerticalAlignment="Top" Width="Auto" Maximum="0.9999" Value="0.1" />
-                            <Label Content="Minimum Margin" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0"
-                     Name="label132" VerticalAlignment="Top" />
-                            <Slider ToolTip="The 'yellow' margin" Height="23" Margin="217,42,6,0" Name="slMinimum"
-                      VerticalAlignment="Top" Width="Auto" Maximum=".1" Value="0.02" />
-                            <TextBox TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="114,8,0,0"
-                       Name="tbPreferred" VerticalAlignment="Top" Width="44" Text="10" KeyDown="TbPreferredKeyDown" />
-                            <TextBox TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="114,42,0,0"
-                       Name="tbMinimum" VerticalAlignment="Top" Width="44" Text="2" KeyDown="TbMinimumKeyDown" />
-                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="164,6,0,0" Name="label1"
-                     VerticalAlignment="Top" />
-                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="164,40,0,0" Name="label2"
-                     VerticalAlignment="Top" />
+                        <Grid Height="42">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Preferred Margin" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label5" VerticalAlignment="Top" Width="102" />
+                            <TextBox TextChanged="TbPreferredTextChanged"  TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="114,8,0,0" Name="tbPreferred" VerticalAlignment="Top" Width="44" Text="10" />
+                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="164,6,0,0" Name="label1" VerticalAlignment="Top" />
+                            <Label Content="Minimum Margin" Height="28" HorizontalAlignment="Left" Margin="6,8,0,0" Name="label132" VerticalAlignment="Top" Grid.Column="1" />
+                            <TextBox TextChanged="TbMinimumTextChanged" Height="23" HorizontalAlignment="Left" Margin="114,10,0,0" Name="tbMinimum" Text="2" TextAlignment="Right" VerticalAlignment="Top" Width="44" Grid.Column="1" />
+                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="164,8,0,0" Name="label2" VerticalAlignment="Top" Grid.Column="1" />
                         </Grid>
                     </GroupBox>
 
