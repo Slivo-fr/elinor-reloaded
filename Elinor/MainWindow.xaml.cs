@@ -444,22 +444,14 @@ namespace Elinor
 
         private void BtnNewClick(object sender, RoutedEventArgs e)
         {
-            var settings = new Profile();
-            var pnw = new ProfileNameWindow
+            var window = new NewProfileWindow(this)
             {
-                Top = Top + Height/10,
-                Left = Left + Width/10,
-                Topmost = Topmost,
+                Topmost = true,
+                Top = Top + Height / 10,
+                Left = Left + Width / 10,
             };
 
-            if (pnw.ShowDialog() == true)
-            {
-                settings.profileName = pnw.ProfileName;
-                cbProfiles.Items.Add(settings);
-                cbProfiles.SelectedItem = settings;
-                tcMain.SelectedIndex = 1;
-                Profile.SaveSettings(settings);
-            }
+            window.ShowDialog();
         }
 
         private void btnUpdateClick(object sender, RoutedEventArgs e)
@@ -530,58 +522,6 @@ namespace Elinor
             catch (Exception)
             {
                 MessageBox.Show("An error occured while updating the profile.");
-            }
-        }
-
-        private void btnImportClick(object sender, RoutedEventArgs e)
-        {
-            var aiw = new ApiImportWindow
-            {
-                Topmost = true,
-                Top = Top + Height/10,
-                Left = Left + Width/10,
-            };
-
-            if (aiw.ShowDialog() == true)
-            {
-                Profile settings = aiw.profile;
-                string fName = string.Format("profiles\\{0}.dat", settings.profileName);
-
-                if (File.Exists(fName))
-                {
-                    MessageBoxResult result = MessageBox.Show(
-                        "Character exists. Update?",
-                        "Character already exists", 
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Information
-                    );
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        int index = 1;
-                        File.Delete(fName);
-                        for (int i = 0; i < cbProfiles.Items.Count; i++)
-                        {
-                            var tmp = (Profile) cbProfiles.Items[i];
-                            if (tmp.profileName == settings.profileName)
-                            {
-                                index = i;
-                                cbProfiles.SelectedIndex = 0;
-                                cbProfiles.Items.RemoveAt(i);
-                                break;
-                            }
-                        }
-                        cbProfiles.Items.Insert(index, settings);
-                        cbProfiles.SelectedItem = settings;
-                        tcMain.SelectedIndex = 1;
-                    }
-                }
-                else
-                {
-                    cbProfiles.Items.Add(settings);
-                    cbProfiles.SelectedItem = settings;
-                    tcMain.SelectedIndex = 1;
-                }
             }
         }
 

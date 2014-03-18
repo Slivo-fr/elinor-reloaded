@@ -12,30 +12,39 @@ namespace Elinor
     public partial class ProfileNameWindow
     {
         internal string ProfileName { get; private set; }
+        protected MainWindow mainWindow;
 
-        public ProfileNameWindow()
+        public ProfileNameWindow(MainWindow mainwindow)
         {
             InitializeComponent();
+            this.mainWindow = mainwindow;
+
         }
 
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
             string result = "OK";
+            var profile = new Profile();
             var invalidFileNameChars = Path.GetInvalidFileNameChars();
+
             foreach (var invalid in invalidFileNameChars)
             {
                 if (tbName.Text.Contains(invalid.ToString(CultureInfo.InvariantCulture))) result = "INVALID";
             }
 
-            //if (MainWindow.cbProfiles.findString(tbName.Text) == -1)
-            //TODO : Check for existing profile with same name
-
             switch (result)
             {
                 case "OK":
-                    ProfileName = tbName.Text;
+
+                    profile.profileName = tbName.Text;
+                    mainWindow.cbProfiles.Items.Add(profile);
+                    mainWindow.cbProfiles.SelectedItem = profile;
+                    mainWindow.tcMain.SelectedIndex = 1;
+                    Profile.SaveSettings(profile);
+
                     DialogResult = true;
                     Close();
+
                     break;
 
                 case "INVALID":
@@ -44,13 +53,6 @@ namespace Elinor
                         => current + (invalidFileNameChar + " "));
 
                     MessageBox.Show(string.Format("Profile name may not contain\n{0}", sInvalid),
-                                "Invalid profile name",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                    break;
-
-                case "ALREADY_EXIST":
-
-                    MessageBox.Show(string.Format("This profile name already exist"),
                                 "Invalid profile name",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                     break;

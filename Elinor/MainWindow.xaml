@@ -337,19 +337,15 @@
                    ToolTip="Click to delete logs" />
       </StatusBarItem>
     </StatusBar>
-    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,240,0" Name="cbProfiles" VerticalAlignment="Top"
-              Width="198" SelectionChanged="CbProfilesSelectionChanged" ItemsSource="{Binding}" />
+    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,203,0" Name="cbProfiles" VerticalAlignment="Top"
+              Width="235" SelectionChanged="CbProfilesSelectionChanged" ItemsSource="{Binding}" />
       
         <Button ToolTip="Create a new profile to store display and calculations settings" Content="New" Height="23"
-            HorizontalAlignment="Right" Margin="0,12,182,0" Name="btnNew" VerticalAlignment="Top" Width="51" Click="BtnNewClick" />
+            HorizontalAlignment="Right" Margin="0,12,121,0" Name="btnNew" VerticalAlignment="Top" Width="51" Click="BtnNewClick" />
       
         <Button ToolTip="Update profile from API" Content="Update" Height="23"
             HorizontalAlignment="Right" Margin="0,12,64,0" Name="btnUpdateProfile" VerticalAlignment="Top" Width="51" Click="btnUpdateClick" IsEnabled="False" />
-      
-        <Button ToolTip="Imports a characters skills and standings from API" Content="Import" Height="23"
-            HorizontalAlignment="Right" Margin="0,12,121,0" Name="btnImport" VerticalAlignment="Top" Width="56" Click="btnImportClick" />
-      
-    <Label Content="Profile" Height="28" HorizontalAlignment="Left" Margin="12,11,0,0" Name="label9"
+        <Label Content="Profile" Height="28" HorizontalAlignment="Left" Margin="12,11,0,0" Name="label9"
            VerticalAlignment="Top" />
     <Button ToolTip="Deletes the currently active profile" Content="Delete" Height="23" Margin="0,12,12,0"
             Name="btnDelete" VerticalAlignment="Top" Click="BtnDeleteClick" HorizontalAlignment="Right" Width="46" />
