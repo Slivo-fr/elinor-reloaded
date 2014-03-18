@@ -20,6 +20,7 @@ namespace Elinor
     /// </summary>
     public partial class MainWindow
     {
+
         internal Profile profile { get; set; }
 
         private readonly FileSystemWatcher _fileSystemWatcher = new FileSystemWatcher();
@@ -406,10 +407,6 @@ namespace Elinor
             profile.minimumThreshold = 0.02;
 
             Profile.SaveSettings(profile);
-            TiSettingsGotFocus(this, null); 
-            
-            profile.minimumThreshold = 0.02;
-            Profile.SaveSettings(profile);
             TiSettingsGotFocus(this, null);
         }
 
@@ -478,52 +475,61 @@ namespace Elinor
 
                 sheet.Query();
 
-                foreach (CharacterSheet.Skill skill in sheet.skills)
+                if (sheet.characterID > 0)
                 {
-                    if (skill.typeID == 3446) //"Broker Relations"
-                        profile.brokerRelations = skill.level;
-                    if (skill.typeID == 16622) //"Accounting" 
-                        profile.accounting = skill.level;
-                }
-
-                //Standings
-                var standings = new NPCStandings(
-                    profile.keyId,
-                    profile.vcode,
-                    profile.charId.ToString(CultureInfo.InvariantCulture)
-                );
-
-                standings.Query();
-
-                if (profile.corporation != null)
-                {
-                    foreach (NPCStandings.Standing standing in standings.standings.NPCCorporations)
+                    foreach (CharacterSheet.Skill skill in sheet.skills)
                     {
-                        if (profile.corporation == standing.fromName)
+                        if (skill.typeID == 3446) //"Broker Relations"
+                            profile.brokerRelations = skill.level;
+                        if (skill.typeID == 16622) //"Accounting" 
+                            profile.accounting = skill.level;
+                    }
+
+                    //Standings
+                    var standings = new NPCStandings(
+                        profile.keyId,
+                        profile.vcode,
+                        profile.charId.ToString(CultureInfo.InvariantCulture)
+                    );
+
+                    standings.Query();
+
+                    if (profile.corporation != null)
+                    {
+                        foreach (NPCStandings.Standing standing in standings.standings.NPCCorporations)
                         {
-                            profile.corpStanding = standing.standing;
+                            if (profile.corporation == standing.fromName)
+                            {
+                                profile.corpStanding = standing.standing;
+                            }
                         }
                     }
-                }
 
-                if (profile.faction != null)
-                {
-                    foreach (NPCStandings.Standing standing in standings.standings.factions)
+                    if (profile.faction != null)
                     {
-                        if (profile.faction == standing.fromName)
+                        foreach (NPCStandings.Standing standing in standings.standings.factions)
                         {
-                            profile.factionStanding = standing.standing;
+                            if (profile.faction == standing.fromName)
+                            {
+                                profile.factionStanding = standing.standing;
+                            }
                         }
                     }
+
+                    TiSettingsGotFocus(this, null);
+
+                    MessageBox.Show("Profile successfully updated");
+                }
+                else
+                {
+                    MessageBox.Show("An error occured while updating the profile. The API key might have been deleted or modified.");
                 }
 
-                TiSettingsGotFocus(this, null);
 
-                System.Windows.Forms.MessageBox.Show("Profile successfully updated");
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("An error occured while updating the profile.");
+                MessageBox.Show("An error occured while updating the profile.");
             }
         }
 

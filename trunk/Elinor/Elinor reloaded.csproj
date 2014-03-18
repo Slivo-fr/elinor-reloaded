@@ -84,6 +84,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,6 +114,7 @@
     </Compile>
     <Compile Include="CacheTools.cs" />
     <Compile Include="CharWrapper.cs" />
+    <Compile Include="MessageBoxEx.cs" />
     <Compile Include="Profiles.cs" />
     <Compile Include="ClipboardTools.cs" />
     <Compile Include="CSVReader.cs" />
