@@ -130,6 +130,9 @@
     <Compile Include="Serializer.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Updates.cs" />
+    <Compile Include="NewProfileWindows.xaml.cs">
+      <DependentUpon>NewProfileWindows.xaml</DependentUpon>
+    </Compile>
     <Page Include="AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectLogPathWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewProfileWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
