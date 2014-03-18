@@ -1,3 +1,16 @@
+Elinor 1.3.0.23, 2014-03-15
+----------------------
+- Changed Assembly and product versions
+- Removed tutorial
+- Tabs re-arrangement
+- Tabs name change
+- Main window is now smaller
+- Restore default buttons are now tab-specific and work fine.
+- currentVersion.xml updated to match actual host configuration
+- Removed margin sliders
+- Added MessageBoxEx Class
+- Added check on profile update from API
+
 Elinor 1.2.0.17, 2014-01-20
 ----------------------
 - Added change-log file
