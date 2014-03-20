@@ -454,7 +454,7 @@ namespace Elinor
             window.ShowDialog();
         }
 
-        private void btnUpdateClick(object sender, RoutedEventArgs e)
+        public void btnUpdateClick(object sender, RoutedEventArgs e)
         {
             try
             {

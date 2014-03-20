@@ -67,30 +67,15 @@ namespace Elinor
                 if (File.Exists(fName))
                 {
                     MessageBoxResult result = MessageBox.Show(
-                        "Character exists. Update?",
-                        "Character already exists",
+                        "This profile already exist. Would you update it ?\nYou can delete the profile and import it back from a new API key if needed.",
+                        "Profile already exists",
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Information
                     );
 
                     if (result == MessageBoxResult.Yes)
                     {
-                        int index = 1;
-                        File.Delete(fName);
-                        for (int i = 0; i < mainWindow.cbProfiles.Items.Count; i++)
-                        {
-                            var tmp = (Profile)mainWindow.cbProfiles.Items[i];
-                            if (tmp.profileName == settings.profileName)
-                            {
-                                index = i;
-                                mainWindow.cbProfiles.SelectedIndex = 0;
-                                mainWindow.cbProfiles.Items.RemoveAt(i);
-                                break;
-                            }
-                        }
-                        mainWindow.cbProfiles.Items.Insert(index, settings);
-                        mainWindow.cbProfiles.SelectedItem = settings;
-                        mainWindow.tcMain.SelectedIndex = 1;
+                        mainWindow.btnUpdateClick(null, null);
                     }
                 }
                 else
