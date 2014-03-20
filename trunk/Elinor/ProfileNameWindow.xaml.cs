@@ -32,6 +32,13 @@ namespace Elinor
                 if (tbName.Text.Contains(invalid.ToString(CultureInfo.InvariantCulture))) result = "INVALID";
             }
 
+            string fName = string.Format("profiles\\{0}.dat", tbName.Text);
+
+            if (File.Exists(fName))
+            {
+                result = "ALREADY_EXIST";
+            }
+
             switch (result)
             {
                 case "OK":
@@ -48,14 +55,30 @@ namespace Elinor
                     break;
 
                 case "INVALID":
-                    var sInvalid = invalidFileNameChars.Where(invalidFileNameChar => 
-                    !char.IsControl(invalidFileNameChar)).Aggregate("", (current, invalidFileNameChar) 
-                        => current + (invalidFileNameChar + " "));
 
-                    MessageBox.Show(string.Format("Profile name may not contain\n{0}", sInvalid),
-                                "Invalid profile name",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                    var sInvalid = invalidFileNameChars.Where(invalidFileNameChar => !char.IsControl(invalidFileNameChar))
+                        .Aggregate("", (current, invalidFileNameChar) => current + (invalidFileNameChar + " "));
+
+                    MessageBox.Show(
+                        string.Format("Profile name may not contain\n{0}", sInvalid),
+                        "Invalid profile name",
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Warning
+                    );
+
                     break;
+
+                case "ALREADY_EXIST":
+
+                    MessageBox.Show(
+                        "You must enter an unused profile name.",
+                        "Profile name already used",
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Warning
+                    );
+
+                    break;
+
 
             }
         }
