@@ -228,7 +228,7 @@
               </Popup>
             </Grid>
           </GroupBox>
-          <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,8"
+          <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,7"
                   Name="btnDefaultChar" VerticalAlignment="Bottom" Width="102" Click="BtnResetCharClick" />
 
         </Grid>
@@ -282,7 +282,7 @@
                         </Grid>
                     </GroupBox>
 
-                    <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,8"
+                    <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,7"
                   Name="btnDefaultTrade" VerticalAlignment="Bottom" Width="102" Click="BtnResetTradeClick" />
                 </Grid>
             </TabItem>
