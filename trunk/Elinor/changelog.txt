@@ -1,11 +1,11 @@
-Elinor 1.4.0.32, 2014-03-15
+Elinor 1.4.0, 2014-03-15
 ----------------------
 - Removed margin sliders
 - Added MessageBoxEx Class
 - Added check on profile update from API
 - Merged new and import buttons.
 
-Elinor 1.3.0.23, 2014-03-15
+Elinor 1.3.0, 2014-03-15
 ----------------------
 - Changed Assembly and product versions
 - Removed tutorial
@@ -15,7 +15,7 @@ Elinor 1.3.0.23, 2014-03-15
 - Restore default buttons are now tab-specific and work fine.
 - currentVersion.xml updated to match actual host configuration
 
-Elinor 1.2.0.17, 2014-01-20
+Elinor 1.2.0, 2014-01-20
 ----------------------
 - Added change-log file
 - Added updating of profile using API informations used for profile creation
