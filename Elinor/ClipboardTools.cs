@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace Elinor
@@ -8,9 +10,21 @@ namespace Elinor
     {
         internal static void SetClipboardWrapper(double d)
         {
-            Clipboard.SetText(d > .01 ? Math.Round(d, 2).ToString(CultureInfo.InvariantCulture) : string.Empty);
-        }
+            bool copied = false;
 
+            while (copied == false)
+            {
+                try
+                {
+                    Clipboard.SetText(d > .01 ? Math.Round(d, 2).ToString(CultureInfo.InvariantCulture) : string.Empty);
+                    copied = true;
+                }
+                catch (Exception){
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+            
         internal static double GetSellPrice(double sell, Profile settings)
         {
             if (settings == null) return .0;
