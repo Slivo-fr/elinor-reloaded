@@ -584,7 +584,7 @@ namespace Elinor
 
         private void MiSubmitBugClick(object sender, RoutedEventArgs e)
         {
-            Process.Start(@"https://code.google.com/p/elinor-reloaded/issues/list");
+            Process.Start(@"https://github.com/Slivo-fr/elinor-reloaded/issues");
         }
 
         private void MiSubmitFeatureClick(object sender, RoutedEventArgs e)
