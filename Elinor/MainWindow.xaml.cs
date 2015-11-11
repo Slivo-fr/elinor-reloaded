@@ -347,7 +347,10 @@ namespace Elinor
                 rbBuy.IsChecked = Properties.Settings.Default.autocopy < 0;
             }
 
-            cbProfiles.Text = Properties.Settings.Default.selectedprofile;
+            if (Properties.Settings.Default.selectedprofile != "")
+            {
+                cbProfiles.Text = Properties.Settings.Default.selectedprofile;
+            }
         }
 
         private void TbStandingOnLostFocus(object sender, RoutedEventArgs routedEventArgs)
