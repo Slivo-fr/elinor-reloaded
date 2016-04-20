@@ -37,6 +37,15 @@ namespace Elinor
         private double _sell;
         private int _typeId;
 
+        private List<int> hubIds = new List<int> {
+            60003760,   // Jita
+            60004588,   // Rens
+            60008494,   // Amarr
+            60011866,   // Dodixie
+            60005686    // Hek
+        };
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -106,23 +115,45 @@ namespace Elinor
 
             if (table == null) return;
 
+            if (profile.hubTrading)
+            {
+                IOrderedEnumerable<List<string>> sell = from List<string> row in table
+                                                        where row[7] == "False" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
+                                                        orderby
+                                                            double.Parse(row[0], CultureInfo.InvariantCulture) ascending
+                                                        select row;
 
-            IOrderedEnumerable<List<string>> sell = from List<string> row in table
-                                                    where row[7] == "False" && row[13] == "0"
-                                                    orderby
-                                                        double.Parse(row[0], CultureInfo.InvariantCulture) ascending
-                                                    select row;
+                string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
+                _sell = double.Parse(sss, CultureInfo.InvariantCulture);
 
-            string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
-            _sell = double.Parse(sss, CultureInfo.InvariantCulture);
+                IOrderedEnumerable<List<string>> buy = from List<string> row in table
+                                                       where row[7] == "True" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
+                                                       orderby
+                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
+                                                       select row;
+                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
+                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                IOrderedEnumerable<List<string>> sell = from List<string> row in table
+                                                        where row[7] == "False" && row[13] == "0"
+                                                        orderby
+                                                            double.Parse(row[0], CultureInfo.InvariantCulture) ascending
+                                                        select row;
 
-            IOrderedEnumerable<List<string>> buy = from List<string> row in table
-                                                   where row[7] == "True" && row[13] == "0"
-                                                   orderby
-                                                       double.Parse(row[0], CultureInfo.InvariantCulture) descending
-                                                   select row;
-            string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
-            _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+                string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
+                _sell = double.Parse(sss, CultureInfo.InvariantCulture);
+
+                IOrderedEnumerable<List<string>> buy = from List<string> row in table
+                                                       where row[7] == "True" && row[13] == "0"
+                                                       orderby
+                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
+                                                       select row;
+                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
+                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+            }
+
 
             IEnumerable<List<string>> aRow = from List<string> row in table
                                              where row[13] == "0"
@@ -294,6 +325,7 @@ namespace Elinor
                 cbAccounting.SelectedIndex = profile.accounting;
 
                 cbAdvancedSettings.IsChecked = profile.advancedStepSettings;
+                cbHubOnly.IsChecked = profile.hubTrading;
 
                 tbSellFract.Text = (profile.sellPercentage*100).ToString(CultureInfo.InvariantCulture);
                 tbBuyFract.Text = (profile.buyPercentage*100).ToString(CultureInfo.InvariantCulture);
@@ -747,6 +779,16 @@ namespace Elinor
                     }
                 }
             }
+        }
+
+        private void cbHubOnlyChecked(object sender, RoutedEventArgs e)
+        {
+            profile.hubTrading = true;
+        }
+
+        private void cbHubOnlyUnchecked(object sender, RoutedEventArgs e)
+        {
+            profile.hubTrading = false;
         }
     }
 }

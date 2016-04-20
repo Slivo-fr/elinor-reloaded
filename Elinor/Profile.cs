@@ -23,6 +23,8 @@ namespace Elinor
             sellPercentage = .0;
             sellThreshold = .0;
 
+            hubTrading = false;
+
             isAPI = false;
             corporation = null;
             faction = null;
@@ -34,28 +36,53 @@ namespace Elinor
 
         public Profile(SerializationInfo info, StreamingContext ctxt)
         {
-            charId = (long)info.GetValue("charId", typeof(long));
-            accounting = (int)info.GetValue("accounting", typeof(int));
-            profileName = (string) info.GetValue("profilename", typeof (string));
-            marginThreshold = (double) info.GetValue("marginthreshold", typeof (double));
-            minimumThreshold = (double) info.GetValue("minimumthreshold", typeof (double));
-            accounting = (int) info.GetValue("accounting", typeof (int));
-            brokerRelations = (int) info.GetValue("brokerrelations", typeof (int));
-            factionStanding = (double) info.GetValue("factionstanding", typeof (double));
-            corpStanding = (double) info.GetValue("corpstanding", typeof (double));
-            advancedStepSettings = info.GetBoolean("advancedstepsettings");
-            buyPercentage = info.GetDouble("buypercentage");
-            buyThreshold = info.GetDouble("buythreshold");
-            sellPercentage = info.GetDouble("sellpercentage");
-            sellThreshold = info.GetDouble("sellthreshold");
 
-            isAPI = info.GetBoolean("isAPI");
-            corporation = (String)info.GetValue("corporation", typeof(String));
-            faction = (String)info.GetValue("faction", typeof(String));
-            charName = (String)info.GetValue("charName", typeof(String));
-
-            keyId = (String)info.GetValue("keyId", typeof(String));
-            vcode = (String)info.GetValue("vcode", typeof(String));
+            foreach (SerializationEntry entry in info)
+            {
+                switch (entry.Name)
+                {
+                    case "charId":
+                        charId = (long)info.GetValue("charId", typeof(long)); break;
+                    case "accounting":
+                        accounting = (int)info.GetValue("accounting", typeof(int)); break;
+                    case "profilename":
+                        profileName = (string)info.GetValue("profilename", typeof(string)); break;
+                    case "marginthreshold":
+                        marginThreshold = (double)info.GetValue("marginthreshold", typeof(double)); break;
+                    case "minimumthreshold":
+                        minimumThreshold = (double)info.GetValue("minimumthreshold", typeof(double)); break;
+                    case "brokerrelations":
+                        brokerRelations = (int)info.GetValue("brokerrelations", typeof(int)); break;
+                    case "factionstanding":
+                        factionStanding = (double)info.GetValue("factionstanding", typeof(double)); break;
+                    case "corpstanding":
+                        corpStanding = (double)info.GetValue("corpstanding", typeof(double)); break;
+                    case "advancedstepsettings":
+                        advancedStepSettings = info.GetBoolean("advancedstepsettings"); break;
+                    case "buypercentage":
+                        buyPercentage = info.GetDouble("buypercentage"); break;
+                    case "buythreshold":
+                        buyThreshold = info.GetDouble("buythreshold"); break;
+                    case "sellpercentage":
+                        sellPercentage = info.GetDouble("sellpercentage"); break;
+                    case "sellthreshold":
+                        sellThreshold = info.GetDouble("sellthreshold"); break;
+                    case "hubTrading":
+                        hubTrading = info.GetBoolean("hubTrading"); break;
+                    case "isAPI":
+                        isAPI = info.GetBoolean("isAPI"); break;
+                    case "corporation":
+                        corporation = (String)info.GetValue("corporation", typeof(String)); break;
+                    case "faction":
+                        faction = (String)info.GetValue("faction", typeof(String)); break;
+                    case "charName":
+                        charName = (String)info.GetValue("charName", typeof(String)); break;
+                    case "keyId":
+                        keyId = (String)info.GetValue("keyId", typeof(String)); break;
+                    case "vcode":
+                        vcode = (String)info.GetValue("vcode", typeof(String)); break;
+                }
+            }
         }
 
         internal long charId { get; set; }
@@ -71,6 +98,8 @@ namespace Elinor
         internal double buyThreshold { get; set; }
         internal double sellPercentage { get; set; }
         internal double sellThreshold { get; set; }
+
+        internal bool hubTrading;
 
         internal bool isAPI { get; set; }
         internal String corporation { get; set; }
@@ -98,6 +127,8 @@ namespace Elinor
             info.AddValue("sellpercentage", sellPercentage);
             info.AddValue("sellthreshold", sellThreshold);
 
+            info.AddValue("hubTrading", hubTrading);
+
             info.AddValue("isAPI", isAPI);
             info.AddValue("corporation", corporation);
             info.AddValue("faction", faction);
@@ -122,7 +153,7 @@ namespace Elinor
                 {
                     return Serializer.DeSerializeObject(string.Format("profiles\\{0}.dat", profileName));
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
                     return null;
                 }

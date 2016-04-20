@@ -2,73 +2,73 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Elinor="clr-namespace:Elinor" Title="Elinor reloaded" Height="426"
         Width="525" Closed="WindowClosed" Loaded="WindowLoaded" ResizeMode="CanMinimize"
         Icon="/Elinor;component/Images/mainicon.png" Closing="WindowClosing">
-  <Window.Resources>
-    <RoutedUICommand x:Key="PinWindow" Text="Pin Window" />
-    <RoutedUICommand x:Key="AutoCopy" Text="Auto Copy" />
-  </Window.Resources>
-  <Window.CommandBindings>
-    <CommandBinding Command="{StaticResource PinWindow}" Executed="PinWindow" />
-    <CommandBinding Command="{StaticResource AutoCopy}" Executed="AutoCopy" />
-  </Window.CommandBindings>
-  <Window.InputBindings>
-    <KeyBinding Key="P" Modifiers="Ctrl" Command="{StaticResource PinWindow}" />
-    <KeyBinding Key="A" Modifiers="Ctrl" Command="{StaticResource AutoCopy}" />
-  </Window.InputBindings>
-  <Grid Height="388">
-    <TabControl Margin="12,45,12,0" Name="tcMain" Height="313" VerticalAlignment="Top">
-      <TabItem Header="Overview" Name="tiOverview">
-        <Grid Height="270">
-          <Grid Height="40" VerticalAlignment="Top" Panel.ZIndex="1">
-            <Label FontWeight="Bold" FontSize="18" Name="lblItemName" Margin="6,3,3,3"
+    <Window.Resources>
+        <RoutedUICommand x:Key="PinWindow" Text="Pin Window" />
+        <RoutedUICommand x:Key="AutoCopy" Text="Auto Copy" />
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource PinWindow}" Executed="PinWindow" />
+        <CommandBinding Command="{StaticResource AutoCopy}" Executed="AutoCopy" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="P" Modifiers="Ctrl" Command="{StaticResource PinWindow}" />
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{StaticResource AutoCopy}" />
+    </Window.InputBindings>
+    <Grid Height="388">
+        <TabControl Margin="12,45,12,0" Name="tcMain" Height="313" VerticalAlignment="Top">
+            <TabItem Header="Overview" Name="tiOverview">
+                <Grid Height="270">
+                    <Grid Height="40" VerticalAlignment="Top" Panel.ZIndex="1">
+                        <Label FontWeight="Bold" FontSize="18" Name="lblItemName" Margin="6,3,3,3"
                    Content="No item selected" />
-          </Grid>
-          <Grid Margin="0,30,0,0" Height="234" VerticalAlignment="Top">
-            <Grid Height="107" VerticalAlignment="Top">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-              </Grid.ColumnDefinitions>
+                    </Grid>
+                    <Grid Margin="0,30,0,0" Height="234" VerticalAlignment="Top">
+                        <Grid Height="107" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
 
-              <Label Grid.Column="0" Content="Sell" HorizontalAlignment="Left" Margin="12,12,0,0"
+                            <Label Grid.Column="0" Content="Sell" HorizontalAlignment="Left" Margin="12,12,0,0"
                      Name="lblSellLabel" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" />
-              <Label Grid.Column="0" Content="Buy" FontSize="14" FontWeight="Bold"
+                            <Label Grid.Column="0" Content="Buy" FontSize="14" FontWeight="Bold"
                      HorizontalAlignment="Left" Margin="12,35,0,0" Name="lblBuyLabel" VerticalAlignment="Top" />
-              <Label ToolTip="Click to copy" Content="0.00 ISK" HorizontalContentAlignment="Right"
+                            <Label ToolTip="Click to copy" Content="0.00 ISK" HorizontalContentAlignment="Right"
                      Margin="0,12,12,0" Name="lblSell" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="170"
                      HorizontalAlignment="Right" MouseDown="LblSellMouseDown" />
-              <Label ToolTip="Click to copy" Content="0.00 ISK" HorizontalContentAlignment="Right"
+                            <Label ToolTip="Click to copy" Content="0.00 ISK" HorizontalContentAlignment="Right"
                      FontSize="14" FontWeight="Bold" Margin="0,35,12,0" Name="lblBuy" VerticalAlignment="Top" Width="174"
                      HorizontalAlignment="Right" Height="30" MouseDown="LblBuyMouseDown" />
 
-              <Label Grid.Column="1" Content="Revenue" Height="28" HorizontalAlignment="Left"
+                            <Label Grid.Column="1" Content="Revenue" Height="28" HorizontalAlignment="Left"
                      Margin="6,14,0,0" Name="lbl5" VerticalAlignment="Top">
-                <Label.ToolTip>
-                  <TextBlock FontStyle="Italic" TextAlignment="Center">
+                                <Label.ToolTip>
+                                    <TextBlock FontStyle="Italic" TextAlignment="Center">
                     Sell price - Broker's fee - Sales tax
-                  </TextBlock>
-                </Label.ToolTip>
-              </Label>
-              <Label Grid.Column="1" Content="Cost of Sales" Height="28" HorizontalAlignment="Left"
+                                    </TextBlock>
+                                </Label.ToolTip>
+                            </Label>
+                            <Label Grid.Column="1" Content="Cost of Sales" Height="28" HorizontalAlignment="Left"
                      Margin="6,29,0,0" Name="lbl6" VerticalAlignment="Top">
-                <Label.ToolTip>
-                  <TextBlock FontStyle="Italic" TextAlignment="Center">
+                                <Label.ToolTip>
+                                    <TextBlock FontStyle="Italic" TextAlignment="Center">
                     Buy price + Broker's fee
-                  </TextBlock>
-                </Label.ToolTip>
-              </Label>
-              <Label Grid.Column="0" Content="Profit" Height="28" HorizontalAlignment="Left"
+                                    </TextBlock>
+                                </Label.ToolTip>
+                            </Label>
+                            <Label Grid.Column="0" Content="Profit" Height="28" HorizontalAlignment="Left"
                      Margin="12,83,0,0" Name="lbl7" VerticalAlignment="Top" FontWeight="Bold">
-                <Label.ToolTip>
-                  <TextBlock FontStyle="Italic" TextAlignment="Center">
+                                <Label.ToolTip>
+                                    <TextBlock FontStyle="Italic" TextAlignment="Center">
                     Revenue - Cost of Sales
-                  </TextBlock>
-                </Label.ToolTip>
-              </Label>
-              <Label Grid.Column="1" Content="0.00 ISK" HorizontalContentAlignment="Right" Height="28"
+                                    </TextBlock>
+                                </Label.ToolTip>
+                            </Label>
+                            <Label Grid.Column="1" Content="0.00 ISK" HorizontalContentAlignment="Right" Height="28"
                      HorizontalAlignment="Right" Margin="0,14,10,0" Name="lblRevenue" VerticalAlignment="Top" />
-              <Label Grid.Column="1" Content="0.00 ISK" Height="28" HorizontalAlignment="Right"
+                            <Label Grid.Column="1" Content="0.00 ISK" Height="28" HorizontalAlignment="Right"
                      HorizontalContentAlignment="Right" Margin="0,29,10,0" Name="lblCoS" VerticalAlignment="Top" />
-              <Label Grid.Column="0" Content="0.00 ISK" Height="28" HorizontalAlignment="Right"
+                            <Label Grid.Column="0" Content="0.00 ISK" Height="28" HorizontalAlignment="Right"
                      HorizontalContentAlignment="Right" Margin="0,83,18,0" Name="lblProfit" VerticalAlignment="Top" FontWeight="Bold" />
                             <Label Content="Buy order fee" Height="28" Margin="5,83,0,0" Name="lbl8" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="86">
                                 <Label.ToolTip>
@@ -83,156 +83,156 @@
                             <Label Content="0.00 ISK" Height="28" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,83,10,0" Name="lblBuyOrderCost" VerticalAlignment="Top" Grid.Column="1" />
                             <Label Content="0.00 ISK" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,63,10,0" Name="lblSellOrderCost" Grid.Column="1" Height="28" VerticalAlignment="Top" />
                         </Grid>
-            <Separator Height="5" Margin="12,116,12,0" Name="sprt1" VerticalAlignment="Top" Width="Auto" />
+                        <Separator Height="5" Margin="12,116,12,0" Name="sprt1" VerticalAlignment="Top" Width="Auto" />
 
-            <Grid Margin="0,132,0,0" Height="102" VerticalAlignment="Top">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-              </Grid.ColumnDefinitions>
-              <Border Name="brdImportant" BorderThickness="1" CornerRadius="4" Padding="5"
+                        <Grid Margin="0,132,0,0" Height="102" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Border Name="brdImportant" BorderThickness="1" CornerRadius="4" Padding="5"
                       BorderBrush="LightGray" Margin="12,0,6,0" Height="96" VerticalAlignment="Top">
-                <Grid>
-                  <Label Content="Profit margin" FontSize="14" FontWeight="Bold" Height="28"
+                                <Grid>
+                                    <Label Content="Profit margin" FontSize="14" FontWeight="Bold" Height="28"
                          HorizontalAlignment="Left" Margin="6,10,0,0" Name="lblMarginLabel" VerticalAlignment="Top">
-                    <Label.ToolTip>
-                      <StackPanel>
-                        <TextBlock FontStyle="Italic" TextAlignment="Center">Profit</TextBlock>
-                        <Separator />
-                        <TextBlock FontStyle="Italic" TextAlignment="Center">Revenue</TextBlock>
-                      </StackPanel>
-                    </Label.ToolTip>
-                  </Label>
-                  <Label Content="0%" FontSize="14" FontWeight="Bold" Height="28"
+                                        <Label.ToolTip>
+                                            <StackPanel>
+                                                <TextBlock FontStyle="Italic" TextAlignment="Center">Profit</TextBlock>
+                                                <Separator />
+                                                <TextBlock FontStyle="Italic" TextAlignment="Center">Revenue</TextBlock>
+                                            </StackPanel>
+                                        </Label.ToolTip>
+                                    </Label>
+                                    <Label Content="0%" FontSize="14" FontWeight="Bold" Height="28"
                          HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,10,13,0" Name="lblMargin"
                          VerticalAlignment="Top" />
-                  <Label Content="Cost markup" FontSize="12" FontWeight="Bold" Height="28"
+                                    <Label Content="Cost markup" FontSize="12" FontWeight="Bold" Height="28"
                          HorizontalAlignment="Left" Margin="6,44,0,0" Name="lblMarkupLabel" VerticalAlignment="Top">
-                    <Label.ToolTip>
-                      <StackPanel>
-                        <TextBlock FontStyle="Italic" TextAlignment="Center">Profit</TextBlock>
-                        <Separator />
-                        <TextBlock FontStyle="Italic" TextAlignment="Center">Cost of Sales</TextBlock>
-                      </StackPanel>
-                    </Label.ToolTip>
-                  </Label>
-                  <Label Content="0%" FontSize="12" FontWeight="Bold" Height="28"
+                                        <Label.ToolTip>
+                                            <StackPanel>
+                                                <TextBlock FontStyle="Italic" TextAlignment="Center">Profit</TextBlock>
+                                                <Separator />
+                                                <TextBlock FontStyle="Italic" TextAlignment="Center">Cost of Sales</TextBlock>
+                                            </StackPanel>
+                                        </Label.ToolTip>
+                                    </Label>
+                                    <Label Content="0%" FontSize="12" FontWeight="Bold" Height="28"
                          HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,44,13,0" Name="lblMarkup"
                          VerticalAlignment="Top" />
-                </Grid>
-              </Border>
-              <GroupBox Grid.Column="1" Header="Auto copy" Height="74" Margin="6,20,12,0"
+                                </Grid>
+                            </Border>
+                            <GroupBox Grid.Column="1" Header="Auto copy" Height="74" Margin="6,20,12,0"
                         Name="gbAutocopy" VerticalAlignment="Top" IsEnabled="False">
-                <Grid>
-                  <RadioButton Content="Sell price" Height="16" HorizontalAlignment="Left"
+                                <Grid>
+                                    <RadioButton Content="Sell price" Height="16" HorizontalAlignment="Left"
                                Margin="6,6,0,0" Name="rbSell" VerticalAlignment="Top" IsChecked="True" GroupName="grpAutoCopy" Checked="RbChecked" />
-                  <RadioButton Content="Buy price" Height="16" HorizontalAlignment="Left"
+                                    <RadioButton Content="Buy price" Height="16" HorizontalAlignment="Left"
                                Margin="6,29,0,0" Name="rbBuy" VerticalAlignment="Top" GroupName="grpAutoCopy" Checked="RbChecked" />
-                </Grid>
-              </GroupBox>
-              <CheckBox Content="Enable auto copy"
+                                </Grid>
+                            </GroupBox>
+                            <CheckBox Content="Enable auto copy"
                         ToolTip="Copies the new price to the clipboard automatically" Grid.Column="1" Height="16" HorizontalAlignment="Left"
                         Margin="6,0,0,0" Name="cbAutoCopy" VerticalAlignment="Top" IsChecked="False" Checked="CbAutoCopyChecked"
                         Unchecked="CbAutoCopyUnchecked" />
-              <Image Height="16" HorizontalAlignment="Right" Margin="206,0,10,0" Name="imgCopyStatus"
+                            <Image Height="16" HorizontalAlignment="Right" Margin="206,0,10,0" Name="imgCopyStatus"
                      Stretch="Fill" VerticalAlignment="Top" Width="16" Grid.Column="1" />
 
 
-            </Grid>
+                        </Grid>
 
 
-          </Grid>
-        </Grid>
-      </TabItem>
-      <TabItem Header="Character settings" Name="tiSettings" LostFocus="TiSettingsLostFocus" GotFocus="TiSettingsGotFocus">
-        <Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Character settings" Name="tiSettings" LostFocus="TiSettingsLostFocus" GotFocus="TiSettingsGotFocus">
+                <Grid>
 
 
-          <GroupBox Header="Fees and Taxes" Margin="12,12,12,0" Name="gbFeesAndTaxes" Height="178"
+                    <GroupBox Header="Fees and Taxes" Margin="12,12,12,0" Name="gbFeesAndTaxes" Height="178"
                     VerticalAlignment="Top">
-            <Grid>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="216" />
-              </Grid.ColumnDefinitions>
-              <Label Content="Broker Relations" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="216" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Broker Relations" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0"
                      Name="label6" VerticalAlignment="Top" />
-              <ComboBox ToolTip="The 'Broker Relations' skill level" Height="23"
+                            <ComboBox ToolTip="The 'Broker Relations' skill level" Height="23"
                         HorizontalAlignment="Right" Margin="0,8,9,0" Name="cbBrokerRelations" VerticalAlignment="Top" Width="57">
-              </ComboBox>
-              <Label Content="" Height="28" HorizontalAlignment="Left" Margin="6,121,0,0"
+                            </ComboBox>
+                            <Label Content="" Height="28" HorizontalAlignment="Left" Margin="6,121,0,0"
                      Name="lblBrokerRelations" VerticalAlignment="Top" FontStyle="Italic">
-                <Label.ToolTip>
-                  <StackPanel>
-                    <TextBlock FontStyle="Italic" TextAlignment="Center">
+                                <Label.ToolTip>
+                                    <StackPanel>
+                                        <TextBlock FontStyle="Italic" TextAlignment="Center">
                       1% – 0.05% ⋅ Broker Relations
-                    </TextBlock>
-                    <Separator />
-                    <Grid>
-                      <TextBlock FontStyle="Italic" TextAlignment="Left" Margin="0,0,2,0">2</TextBlock>
-                      <TextBlock FontStyle="Italic" TextAlignment="Right" Margin="10,0,0,0"
+                                        </TextBlock>
+                                        <Separator />
+                                        <Grid>
+                                            <TextBlock FontStyle="Italic" TextAlignment="Left" Margin="0,0,2,0">2</TextBlock>
+                                            <TextBlock FontStyle="Italic" TextAlignment="Right" Margin="10,0,0,0"
                                  VerticalAlignment="Top" FontSize="9" Height="13">
                         0.14 ⋅ FactionStanding + 0.06 ⋅ CorporationStanding
-                      </TextBlock>
-                    </Grid>
-                  </StackPanel>
-                </Label.ToolTip>
-              </Label>
-              <Label Content="Corp standing" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0"
+                                            </TextBlock>
+                                        </Grid>
+                                    </StackPanel>
+                                </Label.ToolTip>
+                            </Label>
+                            <Label Content="Corp standing" Height="28" HorizontalAlignment="Left" Margin="6,40,0,0"
                      Name="label7" VerticalAlignment="Top" />
-              <Label Content="Faction standing" Height="28" HorizontalAlignment="Left" Margin="6,74,0,0"
+                            <Label Content="Faction standing" Height="28" HorizontalAlignment="Left" Margin="6,74,0,0"
                      Name="label8" VerticalAlignment="Top" />
-              <Label Content="" Grid.Column="1" Height="28" HorizontalAlignment="Right"
+                            <Label Content="" Grid.Column="1" Height="28" HorizontalAlignment="Right"
                      Margin="0,121,6,0" Width="204" Name="lblSalesTax" VerticalAlignment="Top" FontStyle="Italic">
-                <Label.ToolTip>
-                  <TextBlock FontStyle="Italic" TextAlignment="Center">
+                                <Label.ToolTip>
+                                    <TextBlock FontStyle="Italic" TextAlignment="Center">
                     1.5% ⋅ (1 - (Accounting ⋅ 10%))
-                  </TextBlock>
-                </Label.ToolTip>
-              </Label>
-              <Label Content="Accounting" Height="28" HorizontalAlignment="Right" Margin="0,6,140,0"
+                                    </TextBlock>
+                                </Label.ToolTip>
+                            </Label>
+                            <Label Content="Accounting" Height="28" HorizontalAlignment="Right" Margin="0,6,140,0"
                      Name="label123654" VerticalAlignment="Top" Grid.Column="1" />
-              <ComboBox ToolTip="The 'Accounting' skill level" Height="23" HorizontalAlignment="Right"
+                            <ComboBox ToolTip="The 'Accounting' skill level" Height="23" HorizontalAlignment="Right"
                         Margin="0,8,6,0" Name="cbAccounting" VerticalAlignment="Top" Width="57" Grid.Column="1" />
-              <Border BorderBrush="#FFA0A0A0" BorderThickness="1" Grid.Column="1" Height="143"
+                            <Border BorderBrush="#FFA0A0A0" BorderThickness="1" Grid.Column="1" Height="143"
                       HorizontalAlignment="Left" Margin="0,6,0,0" Name="border1" VerticalAlignment="Top" Width="1" MaxWidth="1" MinWidth="1" />
-              <TextBox Height="23" HorizontalAlignment="Right" Margin="0,42,9,0" Name="tbCorpStanding"
+                            <TextBox Height="23" HorizontalAlignment="Right" Margin="0,42,9,0" Name="tbCorpStanding"
                        VerticalAlignment="Top" Width="57" />
-              <Popup AllowsTransparency="True" Name="ppCorpStanding" Placement="Bottom" IsOpen="False">
-                <Border BorderBrush="DimGray" BorderThickness="1" CornerRadius="5">
-                  <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                      <GradientStop Color="WhiteSmoke" Offset="0" />
-                      <GradientStop Color="Gainsboro" Offset="1" />
-                    </LinearGradientBrush>
-                  </Border.Background>
-                  <TextBlock Margin="3">
+                            <Popup AllowsTransparency="True" Name="ppCorpStanding" Placement="Bottom" IsOpen="False">
+                                <Border BorderBrush="DimGray" BorderThickness="1" CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="WhiteSmoke" Offset="0" />
+                                            <GradientStop Color="Gainsboro" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Margin="3">
                     Standing must be between -10 and 10
-                  </TextBlock>
-                </Border>
-              </Popup>
-              <TextBox Height="23" HorizontalAlignment="Right" Margin="0,76,9,0" Name="tbFactionStanding"
+                                    </TextBlock>
+                                </Border>
+                            </Popup>
+                            <TextBox Height="23" HorizontalAlignment="Right" Margin="0,76,9,0" Name="tbFactionStanding"
                        VerticalAlignment="Top" Width="57" />
-              <Popup AllowsTransparency="True" Name="ppFactionStanding" Placement="Bottom" IsOpen="False">
-                <Border BorderBrush="DimGray" BorderThickness="1" CornerRadius="5">
-                  <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                      <GradientStop Color="WhiteSmoke" Offset="0" />
-                      <GradientStop Color="Gainsboro" Offset="1" />
-                    </LinearGradientBrush>
-                  </Border.Background>
-                  <TextBlock Margin="3">
+                            <Popup AllowsTransparency="True" Name="ppFactionStanding" Placement="Bottom" IsOpen="False">
+                                <Border BorderBrush="DimGray" BorderThickness="1" CornerRadius="5">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="WhiteSmoke" Offset="0" />
+                                            <GradientStop Color="Gainsboro" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Margin="3">
                     Standing must be between -10 and 10
-                  </TextBlock>
-                </Border>
-              </Popup>
-            </Grid>
-          </GroupBox>
-          <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,7"
+                                    </TextBlock>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </GroupBox>
+                    <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,7"
                   Name="btnDefaultChar" VerticalAlignment="Bottom" Width="102" Click="BtnResetCharClick" />
 
-        </Grid>
-      </TabItem>
+                </Grid>
+            </TabItem>
             <TabItem Header="Trade settings" Name="tabItem1">
                 <Grid>
                     <CheckBox Content="Enable advanced increment settings" Height="16" HorizontalAlignment="Left"
@@ -265,7 +265,7 @@
                     </GroupBox>
 
                     <Separator Height="5" Margin="12,138,12,0" Name="sprt2" VerticalAlignment="Top" Width="Auto" />
-                    
+
                     <GroupBox Header="Margins" Margin="12,148,12,0" Name="gbMarginsSettings" Height="71"
                     VerticalAlignment="Top">
                         <Grid Height="42">
@@ -279,19 +279,21 @@
                             <Label Content="Minimum Margin" Height="28" HorizontalAlignment="Left" Margin="6,8,0,0" Name="label132" VerticalAlignment="Top" Grid.Column="1" />
                             <TextBox TextChanged="TbMinimumTextChanged" Height="23" HorizontalAlignment="Left" Margin="114,10,0,0" Name="tbMinimum" Text="2" TextAlignment="Right" VerticalAlignment="Top" Width="44" Grid.Column="1" />
                             <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="164,8,0,0" Name="label2" VerticalAlignment="Top" Grid.Column="1" />
+
                         </Grid>
                     </GroupBox>
-
+                    <CheckBox x:Name="cbHubOnly" Content="Hub trading only" Margin="18,229,284,35" Checked="cbHubOnlyChecked" Unchecked="cbHubOnlyUnchecked" ToolTip="Only process orders from main hubs"/>
                     <Button Content="Default settings" Height="23" HorizontalAlignment="Right" Margin="0,0,14,7"
                   Name="btnDefaultTrade" VerticalAlignment="Bottom" Width="102" Click="BtnResetTradeClick" />
                 </Grid>
             </TabItem>
+
         </TabControl>
-    <StatusBar Height="23" Name="sbMain" VerticalAlignment="Bottom">
-      <StatusBarItem HorizontalAlignment="Left">
-        <ToggleButton Height="17" Width="17" Name="btnStayOnTop" Content="Pin" FontSize="8"
+        <StatusBar Height="23" Name="sbMain" VerticalAlignment="Bottom">
+            <StatusBarItem HorizontalAlignment="Left">
+                <ToggleButton Height="17" Width="17" Name="btnStayOnTop" Content="Pin" FontSize="8"
                       ToolTip="Make window stay on top" Click="BtnStayOnTopClick" />
-      </StatusBarItem>
+            </StatusBarItem>
 
             <StatusBarItem HorizontalAlignment="Left">
                 <ToggleButton Height="17" Width="17" Name="btnUpdate" FontSize="15"
@@ -302,52 +304,52 @@
                 </ToggleButton>
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Left">
-        <Elinor:DropDownButton Height="17" Width="17" x:Name="btnBeta" FontSize="10" ToolTip="Beta options">
-          <Elinor:DropDownButton.DropDown>
-            <ContextMenu>
-              <MenuItem Name="miSubmitBug" Header="Submit a bug" Click="MiSubmitBugClick">
-                <MenuItem.Icon>
-                  <Image Source="/Elinor;component/Images/bug.png" Height="16" Width="16" />
-                </MenuItem.Icon>
-              </MenuItem>
-              <!--<MenuItem Name="miSubmitFeature" Header="Request a feature" Click="MiSubmitFeatureClick">
+                <Elinor:DropDownButton Height="17" Width="17" x:Name="btnBeta" FontSize="10" ToolTip="Beta options">
+                    <Elinor:DropDownButton.DropDown>
+                        <ContextMenu>
+                            <MenuItem Name="miSubmitBug" Header="Submit a bug" Click="MiSubmitBugClick">
+                                <MenuItem.Icon>
+                                    <Image Source="/Elinor;component/Images/bug.png" Height="16" Width="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <!--<MenuItem Name="miSubmitFeature" Header="Request a feature" Click="MiSubmitFeatureClick">
                 <MenuItem.Icon>
                   <Image Source="/Elinor;component/Images/20_64_1.png" Height="16" Width="16" />
                 </MenuItem.Icon>
               </MenuItem>-->
-            </ContextMenu>
-          </Elinor:DropDownButton.DropDown>
+                        </ContextMenu>
+                    </Elinor:DropDownButton.DropDown>
                     <Elinor:DropDownButton.Content>
                         <TextBlock Margin="0,-7">β</TextBlock>
                     </Elinor:DropDownButton.Content>
                 </Elinor:DropDownButton>
 
-      </StatusBarItem>
+            </StatusBarItem>
 
-      <StatusBarItem HorizontalAlignment="Left">
-            <Button Height="17" Width="17" Name="btnAbout" FontSize="11" ToolTip="About Elinor"
+            <StatusBarItem HorizontalAlignment="Left">
+                <Button Height="17" Width="17" Name="btnAbout" FontSize="11" ToolTip="About Elinor"
                 Click="BtnAboutClick">
-                <Button.Content>
-                    <TextBlock Margin="0,-5">?</TextBlock>
-                </Button.Content>
-            </Button>
-        </StatusBarItem>
-      <StatusBarItem HorizontalContentAlignment="Right">
-        <TextBlock Text="" Name="tbStatus" MouseLeftButtonUp="TbStatusMouseLeftButtonUp" Cursor="Hand"
+                    <Button.Content>
+                        <TextBlock Margin="0,-5">?</TextBlock>
+                    </Button.Content>
+                </Button>
+            </StatusBarItem>
+            <StatusBarItem HorizontalContentAlignment="Right">
+                <TextBlock Text="" Name="tbStatus" MouseLeftButtonUp="TbStatusMouseLeftButtonUp" Cursor="Hand"
                    ToolTip="Click to delete logs" />
-      </StatusBarItem>
-    </StatusBar>
-    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,203,0" Name="cbProfiles" VerticalAlignment="Top"
+            </StatusBarItem>
+        </StatusBar>
+        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,203,0" Name="cbProfiles" VerticalAlignment="Top"
               Width="235" SelectionChanged="CbProfilesSelectionChanged" ItemsSource="{Binding}" />
-      
+
         <Button ToolTip="Create a new profile to store display and calculations settings" Content="New" Height="23"
             HorizontalAlignment="Right" Margin="0,12,121,0" Name="btnNew" VerticalAlignment="Top" Width="51" Click="BtnNewClick" />
-      
+
         <Button ToolTip="Update profile from API" Content="Update" Height="23"
             HorizontalAlignment="Right" Margin="0,12,64,0" Name="btnUpdateProfile" VerticalAlignment="Top" Width="51" Click="btnUpdateClick" IsEnabled="False" />
         <Label Content="Profile" Height="28" HorizontalAlignment="Left" Margin="12,11,0,0" Name="label9"
            VerticalAlignment="Top" />
-    <Button ToolTip="Deletes the currently active profile" Content="Delete" Height="23" Margin="0,12,12,0"
+        <Button ToolTip="Deletes the currently active profile" Content="Delete" Height="23" Margin="0,12,12,0"
             Name="btnDelete" VerticalAlignment="Top" Click="BtnDeleteClick" HorizontalAlignment="Right" Width="46" />
-  </Grid>
+    </Grid>
 </Window>
