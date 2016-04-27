@@ -43,3 +43,4 @@ Thumbs.db
 Elinor/bin/
 Elinor/obj/
 *.suo
+*.msi
