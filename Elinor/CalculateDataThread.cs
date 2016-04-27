@@ -19,12 +19,12 @@ namespace Elinor
 
         internal static double BrokerFee(int brokerRelations, double corpStanding, double factionStanding)
         {
-            return ((.01 - (brokerRelations*.0005))/Math.Pow(2, ((0.14*factionStanding) + (.06*corpStanding))));
+            return (3 - (brokerRelations * 0.1 + factionStanding * 0.03 + corpStanding * 0.02)) / 100;
         }
 
         internal static double SalesTax(int accounting)
         {
-            return .015*(1 - (accounting*.1));
+            return .020*(1 - (accounting*.1));
         }
 
         internal void Run()

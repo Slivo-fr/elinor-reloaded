@@ -15,7 +15,7 @@
     <Label Content="Slivo" Height="28" HorizontalAlignment="Left" Margin="69,148,0,0" Name="lblChar"
            MouseEnter="LblCharMouseEnter" MouseDown="LblCharMouseDown" ToolTip="Click to copy" VerticalAlignment="Top"
            Foreground="Blue" Cursor="Hand" MouseLeave="LblCharMouseLeave" Panel.ZIndex="1" />
-    <Label Content="1.1.0.0" Height="28" HorizontalAlignment="Left" Margin="69,133,0,0" Name="lblVersion"
+    <Label Content="1.5.0.0" Height="28" HorizontalAlignment="Left" Margin="69,133,0,0" Name="lblVersion"
            VerticalAlignment="Top" />
     <Separator Height="5" HorizontalAlignment="Left" Margin="12,122,0,0" Name="separator1" VerticalAlignment="Top"
                Width="393" />
