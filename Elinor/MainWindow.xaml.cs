@@ -349,6 +349,23 @@ namespace Elinor
                 cbAccounting.Items.Add(i);
             }
 
+            List<Object> rangeItems = new List<Object>();
+
+            foreach (int i in Enum.GetValues(typeof(Profile.ranges)))
+            {
+                var type = typeof(Profile.ranges);
+                var memInfo = type.GetMember(Enum.GetName(typeof(Profile.ranges), i).ToString());
+                var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                var description = ((DescriptionAttribute)attributes[0]).Description;
+
+                ComboboxItem item = new ComboboxItem();
+                item.Text = description;
+                item.Value = i;
+
+                cbBuyRange.Items.Add(item);
+                cbSellRange.Items.Add(item);
+            }
+
             profile = new Profile();
             cbProfiles.Items.Add(profile);
             cbProfiles.SelectedIndex = 0;

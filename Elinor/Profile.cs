@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization;
 
@@ -30,6 +31,14 @@ namespace Elinor
 
             keyId = null;
             vcode = null;
+
+            useBuyCustomBroker = false;
+            buyCustomBroker = 2;
+            useSellCustomBroker = false;
+            sellCustomBroker = 2;
+
+            sellRange = (int)ranges.HUB;
+            buyRange = (int)ranges.HUB;
         }
 
         public Profile(SerializationInfo info, StreamingContext ctxt)
@@ -102,6 +111,26 @@ namespace Elinor
 
         internal String keyId { get; set; }
         internal String vcode { get; set; }
+
+        internal bool useBuyCustomBroker { get; set; }
+        internal double buyCustomBroker { get; set; }
+        internal bool useSellCustomBroker { get; set; }
+        internal double sellCustomBroker { get; set; }
+
+        internal int buyRange { get; set; }
+        internal int sellRange { get; set; }
+
+        public enum ranges
+        {
+            [Description("Hubs (Station)")]
+            HUB,
+            [Description("System")]
+            SYSTEM,
+            [Description("1 jump")]
+            ONEJUMP,
+            [Description("2 jumps")]
+            TWOJUMP,
+        }
 
         #region ISerializable Members
 

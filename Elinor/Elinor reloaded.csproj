@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="CacheTools.cs" />
     <Compile Include="CharWrapper.cs" />
+    <Compile Include="ComboBoxItem.cs" />
     <Compile Include="MessageBoxEx.cs" />
     <Compile Include="Profiles.cs" />
     <Compile Include="ClipboardTools.cs" />
