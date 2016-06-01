@@ -23,8 +23,6 @@ namespace Elinor
             sellPercentage = .0;
             sellThreshold = .0;
 
-            hubTrading = false;
-
             isAPI = false;
             corporation = null;
             faction = null;
@@ -67,8 +65,6 @@ namespace Elinor
                         sellPercentage = info.GetDouble("sellpercentage"); break;
                     case "sellthreshold":
                         sellThreshold = info.GetDouble("sellthreshold"); break;
-                    case "hubTrading":
-                        hubTrading = info.GetBoolean("hubTrading"); break;
                     case "isAPI":
                         isAPI = info.GetBoolean("isAPI"); break;
                     case "corporation":
@@ -99,8 +95,6 @@ namespace Elinor
         internal double sellPercentage { get; set; }
         internal double sellThreshold { get; set; }
 
-        internal bool hubTrading;
-
         internal bool isAPI { get; set; }
         internal String corporation { get; set; }
         internal String faction { get; set; }
@@ -126,8 +120,6 @@ namespace Elinor
             info.AddValue("buythreshold", buyThreshold);
             info.AddValue("sellpercentage", sellPercentage);
             info.AddValue("sellthreshold", sellThreshold);
-
-            info.AddValue("hubTrading", hubTrading);
 
             info.AddValue("isAPI", isAPI);
             info.AddValue("corporation", corporation);
