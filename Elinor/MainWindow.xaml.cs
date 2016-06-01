@@ -115,7 +115,7 @@ namespace Elinor
 
             if (table == null) return;
 
-            if (profile.hubTrading)
+            if (false) // TODO TEMP
             {
                 IOrderedEnumerable<List<string>> sell = from List<string> row in table
                                                         where row[7] == "False" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
@@ -325,7 +325,6 @@ namespace Elinor
                 cbAccounting.SelectedIndex = profile.accounting;
 
                 cbAdvancedSettings.IsChecked = profile.advancedStepSettings;
-                cbHubOnly.IsChecked = profile.hubTrading;
 
                 tbSellFract.Text = (profile.sellPercentage*100).ToString(CultureInfo.InvariantCulture);
                 tbBuyFract.Text = (profile.buyPercentage*100).ToString(CultureInfo.InvariantCulture);
@@ -781,14 +780,34 @@ namespace Elinor
             }
         }
 
-        private void cbHubOnlyChecked(object sender, RoutedEventArgs e)
+        private void TbCustomBuyBrokerChanged(object sender, TextChangedEventArgs e)
         {
-            profile.hubTrading = true;
+            //TODO
         }
 
-        private void cbHubOnlyUnchecked(object sender, RoutedEventArgs e)
+        private void TbCustomSellBrokerChanged(object sender, TextChangedEventArgs e)
         {
-            profile.hubTrading = false;
+            //TODO
+        }
+
+        private void cbUseCustomBuyBrokerChecked(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void cbUseCustomBuyBrokerUnchecked(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void cbUseCustomSellBrokerChecked(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void cbUseCustomSellBrokerUnchecked(object sender, RoutedEventArgs e)
+        {
+            //TODO
         }
     }
 }
