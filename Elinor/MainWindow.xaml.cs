@@ -303,10 +303,47 @@ namespace Elinor
             Profile.SaveSettings(profile);
         }
 
+        private void tiTradeSettingsLostFocus(object sender, RoutedEventArgs e)
+        {
+            Profile.SaveSettings(profile);
+        }
+
+        private void tiRangeSettingsLostFocus(object sender, RoutedEventArgs e)
+        {
+            Profile.SaveSettings(profile);
+        }
+
+        private void tiBrokerSettingsLostFocus(object sender, RoutedEventArgs e)
+        {
+            Profile.SaveSettings(profile);
+        }
+
+        /* TEST, TO BE REMOVED
+        private void tiTradeSettingsGotFocus(object sender, RoutedEventArgs e)
+        {
+            //Profile.SaveSettings(profile);
+        }
+
+        private void tiRangeSettingsGotFocus(object sender, RoutedEventArgs e)
+        {
+            //Profile.SaveSettings(profile);
+        }
+
+        private void tiBrokerSettingsGotFocus(object sender, RoutedEventArgs e)
+        {
+            //Profile.SaveSettings(profile);
+        }
+
         private void TiSettingsGotFocus(object sender, RoutedEventArgs e)
+        {
+            //updateSettingsDisplay();
+        }*/
+
+        private void updateSettingsDisplay()
         {
             Dispatcher.Invoke(new Action(delegate
             {
+                // Charaters settings
                 tbPreferred.Text = Convert.ToString(profile.marginThreshold * 100);
                 tbMinimum.Text = Convert.ToString(profile.minimumThreshold * 100);
 
@@ -324,13 +361,26 @@ namespace Elinor
                 cbBrokerRelations.SelectedIndex = profile.brokerRelations;
                 cbAccounting.SelectedIndex = profile.accounting;
 
+                // Trade settings
                 cbAdvancedSettings.IsChecked = profile.advancedStepSettings;
 
-                tbSellFract.Text = (profile.sellPercentage*100).ToString(CultureInfo.InvariantCulture);
-                tbBuyFract.Text = (profile.buyPercentage*100).ToString(CultureInfo.InvariantCulture);
+                tbSellFract.Text = (profile.sellPercentage * 100).ToString(CultureInfo.InvariantCulture);
+                tbBuyFract.Text = (profile.buyPercentage * 100).ToString(CultureInfo.InvariantCulture);
                 tbSellThresh.Text = profile.sellThreshold.ToString(CultureInfo.InvariantCulture);
                 tbBuyThresh.Text = profile.buyThreshold.ToString(CultureInfo.InvariantCulture);
-            }));
+
+                // Range settings
+                cbSellRange.SelectedIndex = profile.sellRange;
+                cbBuyRange.SelectedIndex = profile.buyRange;
+
+                // Broker settings
+                cbUseCustomBuyBroker.IsChecked = profile.useBuyCustomBroker;
+                tbCustomBuyBroker.Text = (profile.buyCustomBroker * 100).ToString(CultureInfo.InvariantCulture);
+
+                cbUseCustomSellBroker.IsChecked = profile.useSellCustomBroker;
+                tbCustomSellBroker.Text = (profile.sellCustomBroker * 100).ToString(CultureInfo.InvariantCulture);
+
+        }));
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
@@ -342,6 +392,9 @@ namespace Elinor
 
             cbBrokerRelations.SelectionChanged += CbBrokerRelationsSelectionChanged;
             cbAccounting.SelectionChanged += CbAccountingSelectionChanged;
+
+            cbSellRange.SelectionChanged += cbSellRangeSelectionChanged;
+            cbBuyRange.SelectionChanged += cbBuyRangeSelectionChanged;
 
             for (int i = 0; i < 6; i++)
             {
@@ -443,7 +496,7 @@ namespace Elinor
             profile.factionStanding = 0;
 
             Profile.SaveSettings(profile);
-            TiSettingsGotFocus(this, null);
+            updateSettingsDisplay();
         }
 
         private void BtnResetTradeClick(object sender, RoutedEventArgs e)
@@ -458,7 +511,7 @@ namespace Elinor
             profile.minimumThreshold = 0.02;
 
             Profile.SaveSettings(profile);
-            TiSettingsGotFocus(this, null);
+            updateSettingsDisplay();
         }
 
         private void UpdateBrokerFee()
@@ -489,7 +542,7 @@ namespace Elinor
 
             btnUpdateProfile.IsEnabled = (profile.isAPIProfile()) ? true : false;
 
-            TiSettingsGotFocus(this, null);
+            updateSettingsDisplay();
             if (_lastEvent != null) FileSystemWatcherOnCreated(this, _lastEvent);
         }
 
@@ -559,7 +612,7 @@ namespace Elinor
                         }
                     }
 
-                    TiSettingsGotFocus(this, null);
+                    updateSettingsDisplay(); ;
 
                     MessageBox.Show("Profile successfully updated");
                 }
@@ -799,32 +852,90 @@ namespace Elinor
 
         private void TbCustomBuyBrokerChanged(object sender, TextChangedEventArgs e)
         {
-            //TODO
+            if (profile != null)
+            {
+
+                double d;
+
+                if (double.TryParse(tbCustomBuyBroker.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out d))
+                {
+                    d /= 100;
+
+                    if (d <= 1 && d >= 0)
+                    {
+                        profile.buyCustomBroker = d;
+                    }
+                }
+            }
         }
 
         private void TbCustomSellBrokerChanged(object sender, TextChangedEventArgs e)
         {
-            //TODO
+            if (profile != null)
+            {
+
+                double d;
+
+                if (double.TryParse(tbCustomSellBroker.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out d))
+                {
+                    d /= 100;
+
+                    if (d <= 1 && d >= 0)
+                    {
+                        profile.sellCustomBroker = d;
+                    }
+                }
+            }
         }
 
         private void cbUseCustomBuyBrokerChecked(object sender, RoutedEventArgs e)
         {
-            //TODO
+            profile.useBuyCustomBroker = true;
         }
 
         private void cbUseCustomBuyBrokerUnchecked(object sender, RoutedEventArgs e)
         {
-            //TODO
+            profile.useBuyCustomBroker = false;
         }
 
         private void cbUseCustomSellBrokerChecked(object sender, RoutedEventArgs e)
         {
-            //TODO
+            profile.useSellCustomBroker = true;
         }
 
         private void cbUseCustomSellBrokerUnchecked(object sender, RoutedEventArgs e)
         {
-            //TODO
+            profile.useSellCustomBroker = false;
+        }
+
+        private void cbSellRangeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbSellRange.SelectedItem != null)
+                profile.sellRange = ((ComboboxItem)cbSellRange.SelectedItem).Value;
+
+            /*
+            Dispatcher.Invoke(
+                new Action(delegate
+                {
+                    lblSalesTax.Content = String.Format("Sales tax: {0:n}%", CalculateDataThread.SalesTax(profile.accounting) * 100);
+                })
+            );
+            */
+        }
+
+        private void cbBuyRangeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbBuyRange.SelectedItem != null)
+                profile.buyRange = ((ComboboxItem)cbBuyRange.SelectedItem).Value;
+
+            /*
+            Dispatcher.Invoke(
+                new Action(delegate
+                {
+                    lblSalesTax.Content = String.Format("Sales tax: {0:n}%", CalculateDataThread.SalesTax(profile.accounting) * 100);
+                })
+            );
+            */
         }
     }
 }

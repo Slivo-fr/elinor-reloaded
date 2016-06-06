@@ -33,9 +33,9 @@ namespace Elinor
             vcode = null;
 
             useBuyCustomBroker = false;
-            buyCustomBroker = 2;
+            buyCustomBroker = 0.01;
             useSellCustomBroker = false;
-            sellCustomBroker = 2;
+            sellCustomBroker = 0.01;
 
             sellRange = (int)ranges.HUB;
             buyRange = (int)ranges.HUB;
@@ -86,6 +86,18 @@ namespace Elinor
                         keyId = (String)info.GetValue("keyId", typeof(String)); break;
                     case "vcode":
                         vcode = (String)info.GetValue("vcode", typeof(String)); break;
+                    case "useBuyCustomBroker":
+                        useBuyCustomBroker = info.GetBoolean("useBuyCustomBroker"); break;
+                    case "buyCustomBroker":
+                        buyCustomBroker = info.GetDouble("buyCustomBroker"); break;
+                    case "useSellCustomBroker":
+                        useSellCustomBroker = info.GetBoolean("useSellCustomBroker"); break;
+                    case "sellCustomBroker":
+                        sellCustomBroker = info.GetDouble("sellCustomBroker"); break;
+                    case "buyRange":
+                        buyRange = info.GetInt32("buyRange"); break;
+                    case "sellRange":
+                        sellRange = info.GetInt32("sellRange"); break;
                 }
             }
         }
@@ -157,7 +169,15 @@ namespace Elinor
 
             info.AddValue("keyId", keyId);
             info.AddValue("vcode", vcode);
-        }
+
+            info.AddValue("useBuyCustomBroker", useBuyCustomBroker);
+            info.AddValue("buyCustomBroker", buyCustomBroker);
+            info.AddValue("useSellCustomBroker", useSellCustomBroker);
+            info.AddValue("sellCustomBroker", sellCustomBroker);
+
+            info.AddValue("buyRange", buyRange);
+            info.AddValue("sellRange", sellRange);
+    }
 
         #endregion
 

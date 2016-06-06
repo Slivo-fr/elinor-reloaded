@@ -233,7 +233,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Trade settings" Name="tiTradeSettings">
+            <TabItem Header="Trade settings" Name="tiTradeSettings" LostFocus="tiTradeSettingsLostFocus" GotFocus="tiTradeSettingsGotFocus">
                 <Grid>
                     <CheckBox Content="Enable advanced increment settings" Height="16" HorizontalAlignment="Left"
                     Margin="18,12,0,0" Name="cbAdvancedSettings" VerticalAlignment="Top" Checked="CbAdvancedSettingsChecked"
@@ -286,7 +286,7 @@
                   Name="btnDefaultTrade" VerticalAlignment="Bottom" Width="102" Click="BtnResetTradeClick" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Range settings" Name="tiRangeSettings">
+            <TabItem Header="Range settings" Name="tiRangeSettings" LostFocus="tiRangeSettingsLostFocus" GotFocus="tiRangeSettingsGotFocus">
                 <Grid>
                     <GroupBox Header="Order processing range" Margin="12,12,12,0" Name="gbRange" Height="65" VerticalAlignment="Top">
 
@@ -304,7 +304,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Broker settings" Name="tiBrokerSettings">
+            <TabItem Header="Broker settings" Name="tiBrokerSettings" LostFocus="tiRangeSettingsLostFocus" GotFocus="tiRangeSettingsGotFocus">
                 <Grid>
                     <GroupBox Header="Buy orders" Height="61" Margin="12,12,12,0"
                         Name="gbBuyCustomBroker" VerticalAlignment="Top">
