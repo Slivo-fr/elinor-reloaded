@@ -380,7 +380,7 @@ namespace Elinor
                 cbUseCustomSellBroker.IsChecked = profile.useSellCustomBroker;
                 tbCustomSellBroker.Text = (profile.sellCustomBroker * 100).ToString(CultureInfo.InvariantCulture);
 
-        }));
+            }));
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)
