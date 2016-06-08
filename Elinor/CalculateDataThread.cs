@@ -17,9 +17,33 @@ namespace Elinor
             _main = main;
         }
 
-        internal static double BrokerFee(int brokerRelations, double corpStanding, double factionStanding)
+        internal static double BuyBrokerFee(Profile profile)
         {
-            return (3 - (brokerRelations * 0.1 + factionStanding * 0.03 + corpStanding * 0.02)) / 100;
+            if (profile.useBuyCustomBroker)
+            {
+                return profile.buyCustomBroker;
+            }
+            else
+            {
+                return NpcBroker(profile);
+            }
+        }
+
+        internal static double SellBrokerFee(Profile profile)
+        {
+            if (profile.useSellCustomBroker)
+            {
+                return profile.sellCustomBroker;
+            }
+            else
+            {
+                return NpcBroker(profile);
+            }
+        }
+
+        internal static double NpcBroker(Profile profile)
+        {
+            return (3 - (profile.brokerRelations * 0.1 + profile.factionStanding * 0.03 + profile.corpStanding * 0.02)) / 100;
         }
 
         internal static double SalesTax(int accounting)
@@ -46,16 +70,16 @@ namespace Elinor
             }
             else
             {
-                double brokerFee = BrokerFee(_main.profile.brokerRelations, _main.profile.corpStanding,
-                                             _main.profile.factionStanding);
+                double buyBrokerFee = BuyBrokerFee(_main.profile);
+                double sellBrokerFee = SellBrokerFee(_main.profile);
                 double salesTax = SalesTax(_main.profile.accounting);
 
 
-                double revenue = ((_sellPrice - .01) - (_sellPrice - .01)*brokerFee - (_sellPrice - .01)*salesTax);
-                double cos = (_buyPrice + .01) + (_buyPrice + .01)*brokerFee;
+                double revenue = ((_sellPrice - .01) - (_sellPrice - .01)* sellBrokerFee - (_sellPrice - .01)*salesTax);
+                double cos = (_buyPrice + .01) + (_buyPrice + .01)*buyBrokerFee;
 
-                double costOfBuyOrder = _buyPrice * brokerFee;
-                double costOfSellOrder = _sellPrice * brokerFee + _sellPrice * salesTax;
+                double costOfBuyOrder = _buyPrice * buyBrokerFee;
+                double costOfSellOrder = _sellPrice * sellBrokerFee + _sellPrice * salesTax;
    
 
                 _main.Dispatcher.Invoke(new Action(delegate

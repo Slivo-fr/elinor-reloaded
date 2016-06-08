@@ -115,7 +115,7 @@ namespace Elinor
 
             if (table == null) return;
 
-            if (false) // TODO TEMP
+            if (profile.sellRange == (int)Profile.ranges.HUB)
             {
                 IOrderedEnumerable<List<string>> sell = from List<string> row in table
                                                         where row[7] == "False" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
@@ -126,15 +126,9 @@ namespace Elinor
                 string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
 
-                IOrderedEnumerable<List<string>> buy = from List<string> row in table
-                                                       where row[7] == "True" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
-                                                       orderby
-                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
-                                                       select row;
-                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
-                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+
             }
-            else
+            else if (profile.sellRange == (int)Profile.ranges.SYSTEM)
             {
                 IOrderedEnumerable<List<string>> sell = from List<string> row in table
                                                         where row[7] == "False" && row[13] == "0"
@@ -144,9 +138,67 @@ namespace Elinor
 
                 string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
+            
+            }
+            else if (profile.sellRange == (int)Profile.ranges.ONEJUMP)
+            {
+                IOrderedEnumerable<List<string>> sell = from List<string> row in table
+                                                        where row[7] == "False" && Int32.Parse(row[13]) < 2
+                                                        orderby
+                                                            double.Parse(row[0], CultureInfo.InvariantCulture) ascending
+                                                        select row;
 
+                string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
+                _sell = double.Parse(sss, CultureInfo.InvariantCulture);
+            
+            }
+            else
+            {
+                IOrderedEnumerable<List<string>> sell = from List<string> row in table
+                                                        where row[7] == "False" && Int32.Parse(row[13]) < 3
+                                                        orderby
+                                                            double.Parse(row[0], CultureInfo.InvariantCulture) ascending
+                                                        select row;
+
+                string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
+                _sell = double.Parse(sss, CultureInfo.InvariantCulture);
+            
+            }
+
+            if(profile.buyRange == (int)Profile.ranges.HUB)
+            {
+                IOrderedEnumerable<List<string>> buy = from List<string> row in table
+                                                       where row[7] == "True" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
+                                                       orderby
+                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
+                                                       select row;
+                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
+                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+            }
+            else if (profile.buyRange == (int)Profile.ranges.SYSTEM)
+            {
                 IOrderedEnumerable<List<string>> buy = from List<string> row in table
                                                        where row[7] == "True" && row[13] == "0"
+                                                       orderby
+                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
+                                                       select row;
+                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
+                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+            }
+            else if (profile.buyRange == (int)Profile.ranges.ONEJUMP)
+            {
+                IOrderedEnumerable<List<string>> buy = from List<string> row in table
+                                                       where row[7] == "True" && Int32.Parse(row[13]) < 2
+                                                       orderby
+                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
+                                                       select row;
+                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
+                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                IOrderedEnumerable<List<string>> buy = from List<string> row in table
+                                                       where row[7] == "True" && Int32.Parse(row[13]) < 3
                                                        orderby
                                                            double.Parse(row[0], CultureInfo.InvariantCulture) descending
                                                        select row;
@@ -156,7 +208,6 @@ namespace Elinor
 
 
             IEnumerable<List<string>> aRow = from List<string> row in table
-                                             where row[13] == "0"
                                              select row;
 
             foreach (var list in aRow)
@@ -318,7 +369,7 @@ namespace Elinor
             Profile.SaveSettings(profile);
         }
 
-        /* TEST, TO BE REMOVED
+        // TEST, TO BE REMOVED
         private void tiTradeSettingsGotFocus(object sender, RoutedEventArgs e)
         {
             //Profile.SaveSettings(profile);
@@ -337,7 +388,7 @@ namespace Elinor
         private void TiSettingsGotFocus(object sender, RoutedEventArgs e)
         {
             //updateSettingsDisplay();
-        }*/
+        }
 
         private void updateSettingsDisplay()
         {
@@ -519,7 +570,7 @@ namespace Elinor
             Dispatcher.Invoke(new Action(delegate
             {
                 lblBrokerRelations.Content = String.Format("Broker fee: {0:n}%",
-                    CalculateDataThread.BrokerFee(profile.brokerRelations,profile.corpStanding, profile.factionStanding) * 100);
+                    CalculateDataThread.NpcBroker(profile) * 100);
             }));
         }
 
