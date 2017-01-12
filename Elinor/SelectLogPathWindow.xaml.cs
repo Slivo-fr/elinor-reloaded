@@ -15,6 +15,7 @@ namespace Elinor
         public SelectLogPathWindow()
         {
             InitializeComponent();
+            tbPath.Text = Properties.Settings.Default.logpath; ;
         }
 
         internal DirectoryInfo Logpath { get; private set; }
@@ -22,6 +23,8 @@ namespace Elinor
         private void BtnFileSelectClick(object sender, RoutedEventArgs e)
         {
             var dialog = new FolderBrowserDialog();
+            dialog.SelectedPath = Properties.Settings.Default.logpath;
+            
             DialogResult result = dialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
@@ -49,6 +52,7 @@ namespace Elinor
             {
                 MessageBox.Show("Something went wrong.");
             }
+
             Close();
         }
     }
