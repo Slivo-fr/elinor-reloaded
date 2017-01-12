@@ -25,7 +25,7 @@ namespace Elinor
 
         private readonly FileSystemWatcher _fileSystemWatcher = new FileSystemWatcher();
 
-        private readonly DirectoryInfo _logdir =
+        private DirectoryInfo _logdir =
             new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE") + @"\Documents\EVE\logs\marketlogs");
 
         private readonly DirectoryInfo _profdir = new DirectoryInfo("profiles");
@@ -50,41 +50,39 @@ namespace Elinor
         {
             InitializeComponent();
 
-            if (_logdir.Parent != null && !_logdir.Parent.Exists)
+            string customLogDir = Properties.Settings.Default.logpath;
+
+            if (customLogDir != "")
             {
-                if (Properties.Settings.Default.logpath != "")
-                {
-                    string path = Properties.Settings.Default.logpath;
-                    try
-                    {
-                        _logdir = new DirectoryInfo(path);
-                        SetWatcherAndStuff();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Settings file corrupted, sorry.");
-                    }
-                }
-                else
-                {
-                    var dlg = new SelectLogPathWindow();
-                    bool? showDialog = dlg.ShowDialog();
-
-                    if (showDialog != null && (bool) showDialog)
-                    {
-                        _logdir = dlg.Logpath;
-                        Properties.Settings.Default.logpath = _logdir.FullName;
-                        Properties.Settings.Default.Save();
-
-                        SetWatcherAndStuff();
-                    }
-                }
+                _logdir = new DirectoryInfo(customLogDir);
+            }
+  
+            if (!_logdir.Exists)
+            {
+                selectLogPath();
             }
             else
             {
                 SetWatcherAndStuff();
             }
         }
+
+        public void selectLogPath()
+        {
+            var dlg = new SelectLogPathWindow();
+            bool? showDialog = dlg.ShowDialog();
+
+            if (showDialog != null && (bool)showDialog)
+            {
+                _logdir = dlg.Logpath;
+
+                Properties.Settings.Default.logpath = _logdir.FullName;
+                Properties.Settings.Default.Save();
+
+                SetWatcherAndStuff();
+            }
+        }
+            
         
         private void SetWatcherAndStuff()
         {
@@ -688,6 +686,11 @@ namespace Elinor
             cbProfiles.SelectedIndex = i - 1;
             cbProfiles.Items.RemoveAt(i);
             File.Delete("profiles\\" + tSet.profileName + ".dat");
+        }
+
+        private void BtnPath(object sender, RoutedEventArgs e)
+        {
+            selectLogPath();
         }
 
         private void BtnAboutClick(object sender, RoutedEventArgs e)

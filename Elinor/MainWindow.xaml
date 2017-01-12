@@ -372,7 +372,14 @@
                 </Elinor:DropDownButton>
 
             </StatusBarItem>
-
+            <StatusBarItem HorizontalAlignment="Left">
+                <Button Height="17" Width="17" Name="btnPath" FontSize="11" ToolTip="Change marketlog path"
+                Click="BtnPath">
+                    <Button.Content>
+                        <TextBlock Margin="0,-5">📂</TextBlock>
+                    </Button.Content>
+                </Button>
+            </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Left">
                 <Button Height="17" Width="17" Name="btnAbout" FontSize="11" ToolTip="About Elinor"
                 Click="BtnAboutClick">
