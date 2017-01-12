@@ -37,7 +37,7 @@ namespace Elinor
         private double _sell;
         private int _typeId;
 
-        private List<int> hubIds = new List<int> {
+        private List<double> hubIds = new List<double> {
             60003760,   // Jita
             60004588,   // Rens
             60008494,   // Amarr
@@ -116,7 +116,7 @@ namespace Elinor
             if (profile.sellRange == (int)Profile.ranges.HUB)
             {
                 IOrderedEnumerable<List<string>> sell = from List<string> row in table
-                                                        where row[7] == "False" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
+                                                        where row[7] == "False" && row[13] == "0" && hubIds.Contains(double.Parse(row[10]))
                                                         orderby
                                                             double.Parse(row[0], CultureInfo.InvariantCulture) ascending
                                                         select row;
@@ -166,7 +166,7 @@ namespace Elinor
             if(profile.buyRange == (int)Profile.ranges.HUB)
             {
                 IOrderedEnumerable<List<string>> buy = from List<string> row in table
-                                                       where row[7] == "True" && row[13] == "0" && hubIds.Contains(int.Parse(row[10]))
+                                                       where row[7] == "True" && row[13] == "0" && hubIds.Contains(double.Parse(row[10]))
                                                        orderby
                                                            double.Parse(row[0], CultureInfo.InvariantCulture) descending
                                                        select row;
