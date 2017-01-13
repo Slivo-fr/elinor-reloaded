@@ -59,7 +59,7 @@ namespace Elinor
   
             if (!_logdir.Exists)
             {
-                selectLogPath();
+                selectLogPath(_logdir.FullName);
             }
             else
             {
@@ -67,9 +67,9 @@ namespace Elinor
             }
         }
 
-        public void selectLogPath()
+        public void selectLogPath(String logdir)
         {
-            var dlg = new SelectLogPathWindow();
+            var dlg = new SelectLogPathWindow(logdir);
             bool? showDialog = dlg.ShowDialog();
 
             if (showDialog != null && (bool)showDialog)
@@ -690,7 +690,7 @@ namespace Elinor
 
         private void BtnPath(object sender, RoutedEventArgs e)
         {
-            selectLogPath();
+            selectLogPath(_logdir.FullName);
         }
 
         private void BtnAboutClick(object sender, RoutedEventArgs e)

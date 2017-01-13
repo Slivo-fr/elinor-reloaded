@@ -12,10 +12,14 @@ namespace Elinor
     /// </summary>
     public partial class SelectLogPathWindow
     {
-        public SelectLogPathWindow()
+
+        private string logdir;
+
+        public SelectLogPathWindow(string logdir)
         {
             InitializeComponent();
-            tbPath.Text = Properties.Settings.Default.logpath; ;
+            this.logdir = logdir;
+            tbPath.Text = logdir;
         }
 
         internal DirectoryInfo Logpath { get; private set; }
@@ -23,7 +27,7 @@ namespace Elinor
         private void BtnFileSelectClick(object sender, RoutedEventArgs e)
         {
             var dialog = new FolderBrowserDialog();
-            dialog.SelectedPath = Properties.Settings.Default.logpath;
+            dialog.SelectedPath = this.logdir;
             
             DialogResult result = dialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
