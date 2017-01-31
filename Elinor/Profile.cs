@@ -142,6 +142,8 @@ namespace Elinor
             ONEJUMP,
             [Description("2 jumps")]
             TWOJUMP,
+            [Description("Region")]
+            REGION,
         }
 
         #region ISerializable Members

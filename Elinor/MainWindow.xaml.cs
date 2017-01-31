@@ -150,7 +150,7 @@ namespace Elinor
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
             
             }
-            else
+            else if (profile.sellRange == (int)Profile.ranges.TWOJUMP)
             {
                 IOrderedEnumerable<List<string>> sell = from List<string> row in table
                                                         where row[7] == "False" && Int32.Parse(row[13]) < 3
@@ -161,9 +161,20 @@ namespace Elinor
                 string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
             
+            } else
+            {
+                IOrderedEnumerable<List<string>> sell = from List<string> row in table
+                                                        where row[7] == "False"
+                                                        orderby
+                                                            double.Parse(row[0], CultureInfo.InvariantCulture) ascending
+                                                        select row;
+
+                string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
+                _sell = double.Parse(sss, CultureInfo.InvariantCulture);
+
             }
 
-            if(profile.buyRange == (int)Profile.ranges.HUB)
+            if (profile.buyRange == (int)Profile.ranges.HUB)
             {
                 IOrderedEnumerable<List<string>> buy = from List<string> row in table
                                                        where row[7] == "True" && row[13] == "0" && hubIds.Contains(double.Parse(row[10]))
@@ -193,10 +204,20 @@ namespace Elinor
                 string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
                 _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
             }
-            else
+            else if (profile.buyRange == (int)Profile.ranges.TWOJUMP)
             {
                 IOrderedEnumerable<List<string>> buy = from List<string> row in table
                                                        where row[7] == "True" && Int32.Parse(row[13]) < 3
+                                                       orderby
+                                                           double.Parse(row[0], CultureInfo.InvariantCulture) descending
+                                                       select row;
+                string bbb = buy.Any() ? buy.ElementAt(0)[0] : "-1.0";
+                _buy = double.Parse(bbb, CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                IOrderedEnumerable<List<string>> buy = from List<string> row in table
+                                                       where row[7] == "True"
                                                        orderby
                                                            double.Parse(row[0], CultureInfo.InvariantCulture) descending
                                                        select row;
