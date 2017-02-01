@@ -13,6 +13,7 @@ namespace Elinor
     public partial class AboutWindow
     {
         private const string Charname = "Slivo";
+        private const string Support = "Reddit";
 
         public AboutWindow()
         {
@@ -24,6 +25,8 @@ namespace Elinor
             string version = fvi.ProductVersion;
 
             lblVersion.Content = version;
+            lblChar.Content = Charname;
+            LblSupport.Content = Support;
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -36,12 +39,32 @@ namespace Elinor
 
         private void LblCharMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Clipboard.SetText(Charname);
+            Process.Start("https://www.reddit.com/user/Slivo-fr");
         }
 
         private void LblCharMouseEnter(object sender, MouseEventArgs e)
         {
             lblChar.Content = CreateUnderlinedTextBlock(Charname);
+        }
+
+        private void LblCharMouseLeave(object sender, MouseEventArgs e)
+        {
+            lblChar.Content = Charname;
+        }
+
+        private void LblSupportMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://www.reddit.com/r/EveElinor/");
+        }
+
+        private void LblSupportMouseEnter(object sender, MouseEventArgs e)
+        {
+            LblSupport.Content = CreateUnderlinedTextBlock(Support);
+        }
+
+        private void LblSupportMouseLeave(object sender, MouseEventArgs e)
+        {
+            LblSupport.Content = Support;
         }
 
         private TextBlock CreateUnderlinedTextBlock(string text)
@@ -89,9 +112,6 @@ namespace Elinor
             label1.Content = block;
         }
 
-        private void LblCharMouseLeave(object sender, MouseEventArgs e)
-        {
-            lblChar.Content = Charname;
-        }
+
     }
 }

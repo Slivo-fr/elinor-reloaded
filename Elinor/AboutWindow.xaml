@@ -10,17 +10,23 @@
            VerticalAlignment="Top" FontWeight="Bold" />
     <Label Content="Version" Height="28" HorizontalAlignment="Left" Margin="12,133,0,0" Name="label3"
            VerticalAlignment="Top" />
-    <Label Content="Contact" Height="28" HorizontalAlignment="Left" Margin="12,148,0,0" Name="label4"
+    <Label Content="Contact" Height="28" HorizontalAlignment="Left" Margin="12,150,0,0" Name="label4"
            VerticalAlignment="Top" />
-    <Label Content="Slivo" Height="28" HorizontalAlignment="Left" Margin="69,148,0,0" Name="lblChar"
-           MouseEnter="LblCharMouseEnter" MouseDown="LblCharMouseDown" ToolTip="Click to copy" VerticalAlignment="Top"
+    <Label Content="CONTACT_NAME" Height="28" HorizontalAlignment="Left" Margin="69,150,0,0" Name="lblChar"
+           MouseEnter="LblCharMouseEnter" MouseDown="LblCharMouseDown" VerticalAlignment="Top"
            Foreground="Blue" Cursor="Hand" MouseLeave="LblCharMouseLeave" Panel.ZIndex="1" />
-    <Label Content="unavailable" Height="28" HorizontalAlignment="Left" Margin="69,133,0,0" Name="lblVersion"
+    <Label Content="Unavailable" Height="28" HorizontalAlignment="Left" Margin="69,133,0,0" Name="lblVersion"
            VerticalAlignment="Top" />
-    <Separator Height="5" HorizontalAlignment="Left" Margin="12,122,0,0" Name="separator1" VerticalAlignment="Top"
-               Width="393" />
-    <Label Content="Thanks to Cuhlen for EVE.Net" Height="28" HorizontalAlignment="Left" Margin="12,163,0,0"
-           Name="label5" VerticalAlignment="Top" FontStyle="Italic" />
         <TextBlock Height="37" HorizontalAlignment="Left" Margin="127,75,0,0" Name="textBlock1" VerticalAlignment="Top" Width="254">All credit goes to Virppi Jouhinen, <LineBreak/>original author of Elinor.</TextBlock>
+
+        <Separator Height="5" HorizontalAlignment="Left" Margin="12,122,0,0" Name="separator1" VerticalAlignment="Top"
+               Width="393" />
+        <Label Content="Support" Height="28" HorizontalAlignment="Left" Margin="12,167,0,0" x:Name="label4_Copy"
+            VerticalAlignment="Top" />
+        <Label Content="SUPPORT_NAME" Height="28" HorizontalAlignment="Left" Margin="69,167,0,0" x:Name="LblSupport"
+            MouseEnter="LblSupportMouseEnter" MouseDown="LblSupportMouseDown" VerticalAlignment="Top"
+            Foreground="Blue" Cursor="Hand" MouseLeave="LblSupportMouseLeave" Panel.ZIndex="1" />
+        <Label Content="Thanks to Cuhlen for EVE.Net" Height="28" HorizontalAlignment="Left" Margin="234,148,0,0"
+            x:Name="label5_Copy" VerticalAlignment="Top" FontStyle="Italic" />
     </Grid>
 </Window>
