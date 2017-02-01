@@ -163,7 +163,7 @@ namespace Elinor
 
         private void BtnCreateKeyClick(object sender, RoutedEventArgs e)
         {
-            Process.Start(@"https://support.eveonline.com/api/Key/CreatePredefined/524296/0/false");
+            Process.Start(@"https://community.eveonline.com/support/api-key/CreatePredefined?accessMask=1099431944");
         }
     }
 }
