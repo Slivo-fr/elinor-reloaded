@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <elinor>
-	<version>1.4.1.0</version>
-	<url>http://elinor.slivo.fr/downloads</url>
+	<version>1.7.2.0</version>
+	<url>https://github.com/Slivo-fr/elinor-reloaded/releases</url>
 </elinor>
 
-<!--THIS IS HOSTED ON MY SERVER TO CHECK FOR UPDATES.
-    THE URL TO THIS FILE THAT IS CHECKED AT STARTUP IS
-    http://elinor.slivo.fr/update/currentVersion.xml
--->
+<!-- Elinor checks for this file for updates at github/master https://raw.githubusercontent.com/Slivo-fr/elinor-reloaded/master/Elinor/currentVersion.xml -->

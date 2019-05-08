@@ -27,7 +27,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1486EB18DE1D9E87A7EDD69F1B7A8582"
+        "MsmKey" = "8:_D11C75DE46C6D4A095B852B5ED287BBB"
         "OwnerKey" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1486EB18DE1D9E87A7EDD69F1B7A8582"
+        "OwnerKey" = "8:_D11C75DE46C6D4A095B852B5ED287BBB"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -168,14 +168,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1486EB18DE1D9E87A7EDD69F1B7A8582"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D11C75DE46C6D4A095B852B5ED287BBB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EVE.Net, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1486EB18DE1D9E87A7EDD69F1B7A8582"
+                    "_D11C75DE46C6D4A095B852B5ED287BBB"
                     {
                     "Name" = "8:EVE.Net.dll"
                     "Attributes" = "3:512"
@@ -266,15 +266,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Elinor reloaded"
-        "ProductCode" = "8:{9E46730A-110F-49A2-9D7B-9CD9EF11DC8B}"
-        "PackageCode" = "8:{58C9C70E-B6D5-4C8A-B675-816CCA37FC92}"
+        "ProductCode" = "8:{D5D141AA-AE6C-4DAA-838A-941264890036}"
+        "PackageCode" = "8:{D409671D-8660-4F8B-ABE4-14387DDB462C}"
         "UpgradeCode" = "8:{F54F50ED-FDA6-4419-B476-E665ADA1FCBC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.7.1"
+        "ProductVersion" = "8:1.7.2"
         "Manufacturer" = "8:Slivo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

@@ -21,7 +21,7 @@ namespace Elinor
 
                 try
                 {
-                    reader = new XmlTextReader(@"http://elinor.slivo.fr/update/currentVersion.xml");
+                    reader = new XmlTextReader(@"https://raw.githubusercontent.com/Slivo-fr/elinor-reloaded/master/Elinor/currentVersion.xml");
                     reader.MoveToContent();
                     var elementName = "";
                     if ((reader.NodeType == XmlNodeType.Element) &&
