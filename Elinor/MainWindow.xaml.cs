@@ -136,7 +136,7 @@ namespace Elinor
 
                 string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
-            
+
             }
             else if (profile.sellRange == (int)Profile.ranges.ONEJUMP)
             {
@@ -148,7 +148,7 @@ namespace Elinor
 
                 string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
-            
+
             }
             else if (profile.sellRange == (int)Profile.ranges.TWOJUMP)
             {
@@ -160,7 +160,7 @@ namespace Elinor
 
                 string sss = sell.Any() ? sell.ElementAt(0)[0] : "-1.0";
                 _sell = double.Parse(sss, CultureInfo.InvariantCulture);
-            
+
             } else
             {
                 IOrderedEnumerable<List<string>> sell = from List<string> row in table
@@ -236,29 +236,15 @@ namespace Elinor
                 break;
             }
 
-            var setItemName = new BackgroundWorker();
-            setItemName.DoWork += (sender, args) =>
-            {
-                var prod = new TypeName(new[] {_typeId.ToString(CultureInfo.InvariantCulture)});
-                prod.Query();
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    if (prod.types.Count > 0)
-                    {
-                        TypeName.GameType type = prod.types[0];
-                        lblItemName.Content = type.typeName;
-                        lblItemName.ToolTip = type.typeName;
-                    }
-                    else
-                    {
-                        lblItemName.Content = "Unknown";
-                        lblItemName.ToolTip ="Product not found";
-                    }
-                }));
-            };
-
-            setItemName.RunWorkerAsync();
+            // extract item name from market log file name
+            var fileNameParts = s.Split('-');
+            // remove first and last entry of splittet string[] (location and typeid) and join rest since we can have a dash in the item name
+            var _itemName = fileNameParts.Length <= 2 ? "" : String.Join("-", fileNameParts.Skip(1).Reverse().Skip(1).Reverse());
+            Dispatcher.Invoke(new Action(delegate
+            {              
+                lblItemName.Content = _itemName.Length != 0 ? _itemName : "Unkown";
+                lblItemName.ToolTip = _itemName.Length != 0 ? _itemName : "Product not found";
+            }));      
 
             Dispatcher.Invoke(new Action(delegate
             {
