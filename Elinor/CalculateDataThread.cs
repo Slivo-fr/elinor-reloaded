@@ -43,12 +43,12 @@ namespace Elinor
 
         internal static double NpcBroker(Profile profile)
         {
-            return (3 - (profile.brokerRelations * 0.1 + profile.factionStanding * 0.03 + profile.corpStanding * 0.02)) / 100;
+            return (5 - (profile.brokerRelations * 0.3 + profile.factionStanding * 0.03 + profile.corpStanding * 0.02)) / 100;
         }
 
         internal static double SalesTax(int accounting)
         {
-            return .020*(1 - (accounting*.1));
+            return .050*(1 - (accounting*.11));
         }
 
         internal void Run()

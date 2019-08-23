@@ -44,3 +44,4 @@ Elinor/bin/
 Elinor/obj/
 *.suo
 *.msi
+.vs/

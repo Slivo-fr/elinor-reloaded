@@ -19,6 +19,7 @@ namespace Elinor
 
             while (copied == false && Attempts < 3)
             {
+                Clipboard.Clear();
                 try
                 {
                     Clipboard.SetText(d > .01 ? Math.Round(d, 2).ToString(CultureInfo.InvariantCulture) : string.Empty);
