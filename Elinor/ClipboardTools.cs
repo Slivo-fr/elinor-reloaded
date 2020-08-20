@@ -41,9 +41,9 @@ namespace Elinor
 
             if (settings.advancedStepSettings)
             {
-                result -= (result*settings.sellPercentage > settings.sellThreshold)
-                              ? settings.sellThreshold
-                              : settings.sellPercentage*result;
+                result -= (result - result*settings.sellPercentage) > settings.sellThreshold
+                              ? (result - result*settings.sellPercentage)
+                              : settings.sellThreshold;
             }
             else
             {
@@ -61,9 +61,9 @@ namespace Elinor
 
             if (settings.advancedStepSettings)
             {
-                result += result*settings.buyPercentage > settings.buyThreshold
-                              ? settings.buyThreshold
-                              : settings.buyPercentage*result;
+                result += (result - result*settings.buyPercentage) > settings.buyThreshold
+                              ? (result - result*settings.buyPercentage)
+                              : settings.buyThreshold;
             }
             else
             {
