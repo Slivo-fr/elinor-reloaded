@@ -47,7 +47,7 @@ namespace Elinor
             }
             else
             {
-                result -= .01;
+                result -= Math.Max(Math.Pow(10, Math.Floor(Math.Log10(result / 1000))), 0.01);
             }
 
             return result;
@@ -67,7 +67,7 @@ namespace Elinor
             }
             else
             {
-                result += .01;
+                result += Math.Max(Math.Pow(10, Math.Floor(Math.Log10(result / 1000))), 0.01);
             }
 
             return result;
