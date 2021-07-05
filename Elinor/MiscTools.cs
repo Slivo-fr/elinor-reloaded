@@ -17,6 +17,10 @@ namespace Elinor
             {
                 stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             }
+            catch (FileNotFoundException)
+            {
+                return true;
+            }
             catch (IOException)
             {
                 return true;
