@@ -218,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="currentVersion.xml" />
+    <Content Include="EVE.Net.dll" />
     <Resource Include="Images\52_64_9.png" />
   </ItemGroup>
   <ItemGroup />
