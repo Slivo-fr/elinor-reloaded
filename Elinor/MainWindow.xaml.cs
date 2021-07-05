@@ -322,6 +322,7 @@ namespace Elinor
 
         private void TbStatusMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            this._lastEvent = null;
             CacheTools.ClearMarketLogs(_logdir);
             UpdateStatus();
         }
@@ -584,10 +585,14 @@ namespace Elinor
         {
             btnDelete.IsEnabled = cbProfiles.SelectedItem.ToString() != "Default";
             Profile.SaveSettings(profile);
-            profile = (Profile) cbProfiles.SelectedItem;
+            profile = (Profile)cbProfiles.SelectedItem;
 
             updateSettingsDisplay();
-            if (_lastEvent != null) FileSystemWatcherOnCreated(this, _lastEvent);
+            if (_lastEvent != null) {
+                FileSystemWatcherOnCreated(this, _lastEvent);
+            } else {
+                this.resetCurrentExportValues();
+            }
         }
 
         private void BtnNewClick(object sender, RoutedEventArgs e)
@@ -866,6 +871,19 @@ namespace Elinor
                 })
             );
             */
+        }
+
+        private void resetCurrentExportValues()
+        {
+            var cdt = new CalculateDataThread(-1, -1, this);
+            var calc = new Thread(cdt.Run);
+            calc.Start();
+
+            lblItemName.Content = "No item selected";
+            lblSell.Content = "0.00 ISK";
+            lblBuy.Content = "0.00 ISK";
+            lblBuyOrderCost.Content = "0.00 ISK";
+            lblSellOrderCost.Content = "0.00 ISK";
         }
     }
 }
