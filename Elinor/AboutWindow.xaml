@@ -26,7 +26,5 @@
         <Label Content="SUPPORT_NAME" Height="28" HorizontalAlignment="Left" Margin="69,167,0,0" x:Name="LblSupport"
             MouseEnter="LblSupportMouseEnter" MouseDown="LblSupportMouseDown" VerticalAlignment="Top"
             Foreground="Blue" Cursor="Hand" MouseLeave="LblSupportMouseLeave" Panel.ZIndex="1" />
-        <Label Content="Thanks to Cuhlen for EVE.Net" Height="28" HorizontalAlignment="Left" Margin="234,148,0,0"
-            x:Name="label5_Copy" VerticalAlignment="Top" FontStyle="Italic" />
     </Grid>
 </Window>

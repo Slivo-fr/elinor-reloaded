@@ -235,38 +235,26 @@
             </TabItem>
             <TabItem Header="Trade settings" Name="tiTradeSettings" LostFocus="tiTradeSettingsLostFocus" GotFocus="tiTradeSettingsGotFocus">
                 <Grid>
-                    <CheckBox Content="Enable advanced increment settings" Height="16" HorizontalAlignment="Left"
-                    Margin="18,12,0,0" Name="cbAdvancedSettings" VerticalAlignment="Top" Checked="CbAdvancedSettingsChecked"
-                    Unchecked="CbAdvancedSettingsUnchecked" />
-                    <GroupBox Header="Advanced increment settings" Height="90" Margin="12,34,12,0"
-                    Name="gbAdvancedSettings" VerticalAlignment="Top" IsEnabled="False">
+
+                    <GroupBox Header="Broker settings" Height="106" Margin="12,12,12,0"
+                        Name="gbBuyCustomBroker" VerticalAlignment="Top">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Label Content="Sell price fraction [%]" Height="28" HorizontalAlignment="Left"
-                     Margin="6,6,0,0" Name="lblSellFract" VerticalAlignment="Top" />
-                            <Label Content="Threshold [ISK]" Height="28" HorizontalAlignment="Left" Margin="6,33,0,0"
-                     Name="lblSellThresh" VerticalAlignment="Top" />
-                            <Label Grid.Column="1" Content="Buy price fraction [%]" Height="28"
-                     HorizontalAlignment="Left" Margin="6,6,0,0" Name="lblBuyFract" VerticalAlignment="Top" />
-                            <Label Grid.Column="1" Content="Threshold [ISK]" Height="28" Margin="6,33,0,0"
-                     Name="lblBuyThresh" VerticalAlignment="Top" HorizontalAlignment="Left" Width="124" />
-                            <TextBox Height="23" Margin="134,8,8,0" Name="tbSellFract" VerticalAlignment="Top"
-                       TextChanged="TbSellFractTextChanged" />
-                            <TextBox Height="23" Margin="134,35,8,0" Name="tbSellThresh" VerticalAlignment="Top"
-                       TextChanged="TbSellThreshTextChanged" />
-                            <TextBox Height="23" Margin="134,8,8,0" Name="tbBuyFract" VerticalAlignment="Top"
-                       Grid.Column="1" TextChanged="TbBuyFractTextChanged" />
-                            <TextBox Height="23" Margin="134,35,8,0" Name="tbBuyThresh" VerticalAlignment="Top"
-                       Grid.Column="1" TextChanged="TbBuyThreshTextChanged" />
+
+                            <CheckBox x:Name="cbUseCustomBuyBroker" Content="Use custom broker free for buys" Margin="0,12,12,0" Checked="cbUseCustomBuyBrokerChecked" Unchecked="cbUseCustomBuyBrokerUnchecked" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="200" />
+                            <TextBox TextChanged="TbCustomBuyBrokerChanged"  TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="116,10,0,0" Name="tbCustomBuyBroker" VerticalAlignment="Top" Width="80" Text="2" Grid.Column="1" />
+                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="195,8,0,0" Name="labelpercentbrokerbuy" VerticalAlignment="Top" Grid.Column="1" />
+
+                            <CheckBox x:Name="cbUseCustomSellBroker" Content="Use custom broker free for sells" Margin="0,50,12,0" Checked="cbUseCustomSellBrokerChecked" Unchecked="cbUseCustomSellBrokerUnchecked" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="200" />
+                            <TextBox TextChanged="TbCustomSellBrokerChanged"  TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="116,48,0,0" Name="tbCustomSellBroker" VerticalAlignment="Top" Width="80" Text="2" Grid.Column="1" />
+                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="195,45,0,0" Name="labelpercentbrokersell" VerticalAlignment="Top" Grid.Column="1" />
                         </Grid>
                     </GroupBox>
 
-                    <Separator Height="5" Margin="12,138,12,0" Name="sprt2" VerticalAlignment="Top" Width="Auto" />
-
-                    <GroupBox Header="Margins" Margin="12,148,12,0" Name="gbMarginsSettings" Height="71"
+                    <GroupBox Header="Margins" Margin="12,125,12,0" Name="gbMarginsSettings" Height="71"
                     VerticalAlignment="Top">
                         <Grid Height="42">
                             <Grid.ColumnDefinitions>
@@ -303,37 +291,6 @@
                     </GroupBox>
                 </Grid>
 
-            </TabItem>
-            <TabItem Header="Broker settings" Name="tiBrokerSettings" LostFocus="tiRangeSettingsLostFocus" GotFocus="tiRangeSettingsGotFocus">
-                <Grid>
-                    <GroupBox Header="Buy orders" Height="61" Margin="12,12,12,0"
-                        Name="gbBuyCustomBroker" VerticalAlignment="Top">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="cbUseCustomBuyBroker" Content="Use custom broker free" Margin="0,12,12,0" Checked="cbUseCustomBuyBrokerChecked" Unchecked="cbUseCustomBuyBrokerUnchecked" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="200" />
-                            <TextBox TextChanged="TbCustomBuyBrokerChanged"  TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="116,9,0,0" Name="tbCustomBuyBroker" VerticalAlignment="Top" Width="80" Text="2" Grid.Column="1" />
-                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="195,7,0,0" Name="labelpercentbrokerbuy" VerticalAlignment="Top" Grid.Column="1" />
-
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="Sell orders" Height="61" Margin="12,80,12,0"
-                        Name="gbSellCustomBroker" VerticalAlignment="Top">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox x:Name="cbUseCustomSellBroker" Content="Use custom broker free" Margin="0,12,12,0" Checked="cbUseCustomSellBrokerChecked" Unchecked="cbUseCustomSellBrokerUnchecked" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="200" />
-                            <TextBox TextChanged="TbCustomSellBrokerChanged"  TextAlignment="Right" Height="23" HorizontalAlignment="Left" Margin="116,9,0,0" Name="tbCustomSellBroker" VerticalAlignment="Top" Width="80" Text="2" Grid.Column="1" />
-                            <Label Content="%" Height="28" HorizontalAlignment="Left" Margin="195,7,0,0" Name="labelpercentbrokersell" VerticalAlignment="Top" Grid.Column="1" />
-                        </Grid>
-                    </GroupBox>
-                </Grid>
             </TabItem>
         </TabControl>
         <StatusBar Height="23" Name="sbMain" VerticalAlignment="Bottom">
@@ -393,14 +350,11 @@
                    ToolTip="Click to delete logs" />
             </StatusBarItem>
         </StatusBar>
-        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,203,0" Name="cbProfiles" VerticalAlignment="Top"
-              Width="235" SelectionChanged="CbProfilesSelectionChanged" ItemsSource="{Binding}" />
+        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,133,0" Name="cbProfiles" VerticalAlignment="Top"
+              Width="323" SelectionChanged="CbProfilesSelectionChanged" ItemsSource="{Binding}" />
 
         <Button ToolTip="Create a new profile to store display and calculations settings" Content="New" Height="23"
-            HorizontalAlignment="Right" Margin="0,12,121,0" Name="btnNew" VerticalAlignment="Top" Width="51" Click="BtnNewClick" />
-
-        <Button ToolTip="Update profile from API" Content="Update" Height="23"
-            HorizontalAlignment="Right" Margin="0,12,64,0" Name="btnUpdateProfile" VerticalAlignment="Top" Width="51" Click="btnUpdateClick" IsEnabled="False" />
+            HorizontalAlignment="Right" Margin="0,12,70,0" Name="btnNew" VerticalAlignment="Top" Width="51" Click="BtnNewClick" />
         <Label Content="Profile" Height="28" HorizontalAlignment="Left" Margin="12,11,0,0" Name="label9"
            VerticalAlignment="Top" />
         <Button ToolTip="Deletes the currently active profile" Content="Delete" Height="23" Margin="0,12,12,0"

@@ -106,14 +106,7 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ApiImportSelectFactionWindow.xaml.cs">
-      <DependentUpon>ApiImportSelectFactionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ApiImportWindow.xaml.cs">
-      <DependentUpon>ApiImportWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CacheTools.cs" />
-    <Compile Include="CharWrapper.cs" />
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="MessageBoxEx.cs" />
     <Compile Include="Profiles.cs" />
@@ -124,25 +117,13 @@
     <Compile Include="SelectLogPathWindow.xaml.cs">
       <DependentUpon>SelectLogPathWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StandingWrapper.cs" />
     <Compile Include="ProfileNameWindow.xaml.cs">
       <DependentUpon>ProfileNameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Serializer.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Updates.cs" />
-    <Compile Include="NewProfileWindows.xaml.cs">
-      <DependentUpon>NewProfileWindows.xaml</DependentUpon>
-    </Compile>
     <Page Include="AboutWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ApiImportSelectFactionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ApiImportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,10 +145,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectLogPathWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NewProfileWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,7 +218,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="currentVersion.xml" />
-    <Content Include="EVE.Net.dll" />
     <Resource Include="Images\52_64_9.png" />
   </ItemGroup>
   <ItemGroup />
