@@ -11,7 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using EVE.Net;
-using EVE.Net.Character;
 
 namespace Elinor
 {
@@ -323,6 +322,7 @@ namespace Elinor
 
         private void TbStatusMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            this._lastEvent = null;
             CacheTools.ClearMarketLogs(_logdir);
             UpdateStatus();
         }
@@ -416,14 +416,6 @@ namespace Elinor
 
                 cbBrokerRelations.SelectedIndex = profile.brokerRelations;
                 cbAccounting.SelectedIndex = profile.accounting;
-
-                // Trade settings
-                cbAdvancedSettings.IsChecked = profile.advancedStepSettings;
-
-                tbSellFract.Text = (profile.sellPercentage * 100).ToString(CultureInfo.InvariantCulture);
-                tbBuyFract.Text = (profile.buyPercentage * 100).ToString(CultureInfo.InvariantCulture);
-                tbSellThresh.Text = profile.sellThreshold.ToString(CultureInfo.InvariantCulture);
-                tbBuyThresh.Text = profile.buyThreshold.ToString(CultureInfo.InvariantCulture);
 
                 // Range settings
                 cbSellRange.SelectedIndex = profile.sellRange;
@@ -557,14 +549,13 @@ namespace Elinor
 
         private void BtnResetTradeClick(object sender, RoutedEventArgs e)
         {
-            profile.advancedStepSettings = false;
-            profile.buyPercentage = 0;
-            profile.sellPercentage = 0;
-            profile.buyThreshold = 0;
-            profile.sellThreshold = 0;
-
             profile.marginThreshold = 0.1;
             profile.minimumThreshold = 0.02;
+
+            profile.useBuyCustomBroker = false;
+            profile.buyCustomBroker = 0.01;
+            profile.useSellCustomBroker = false;
+            profile.sellCustomBroker = 0.01;
 
             Profile.SaveSettings(profile);
             updateSettingsDisplay();
@@ -594,17 +585,19 @@ namespace Elinor
         {
             btnDelete.IsEnabled = cbProfiles.SelectedItem.ToString() != "Default";
             Profile.SaveSettings(profile);
-            profile = (Profile) cbProfiles.SelectedItem;
-
-            btnUpdateProfile.IsEnabled = (profile.isAPIProfile()) ? true : false;
+            profile = (Profile)cbProfiles.SelectedItem;
 
             updateSettingsDisplay();
-            if (_lastEvent != null) FileSystemWatcherOnCreated(this, _lastEvent);
+            if (_lastEvent != null) {
+                FileSystemWatcherOnCreated(this, _lastEvent);
+            } else {
+                this.resetCurrentExportValues();
+            }
         }
 
         private void BtnNewClick(object sender, RoutedEventArgs e)
         {
-            var window = new NewProfileWindow(this)
+            var window = new ProfileNameWindow(this)
             {
                 Topmost = true,
                 Top = Top + Height / 10,
@@ -612,77 +605,6 @@ namespace Elinor
             };
 
             window.ShowDialog();
-        }
-
-        public void btnUpdateClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // Skills
-                var sheet = new CharacterSheet(
-                    profile.keyId,
-                    profile.vcode,
-                    profile.charId.ToString(CultureInfo.InvariantCulture)
-                );
-
-                sheet.Query();
-
-                if (sheet.characterID > 0)
-                {
-                    foreach (CharacterSheet.Skill skill in sheet.skills)
-                    {
-                        if (skill.typeID == 3446) //"Broker Relations"
-                            profile.brokerRelations = skill.level;
-                        if (skill.typeID == 16622) //"Accounting" 
-                            profile.accounting = skill.level;
-                    }
-
-                    //Standings
-                    var standings = new NPCStandings(
-                        profile.keyId,
-                        profile.vcode,
-                        profile.charId.ToString(CultureInfo.InvariantCulture)
-                    );
-
-                    standings.Query();
-
-                    if (profile.corporation != null)
-                    {
-                        foreach (NPCStandings.Standing standing in standings.standings.NPCCorporations)
-                        {
-                            if (profile.corporation == standing.fromName)
-                            {
-                                profile.corpStanding = standing.standing;
-                            }
-                        }
-                    }
-
-                    if (profile.faction != null)
-                    {
-                        foreach (NPCStandings.Standing standing in standings.standings.factions)
-                        {
-                            if (profile.faction == standing.fromName)
-                            {
-                                profile.factionStanding = standing.standing;
-                            }
-                        }
-                    }
-
-                    updateSettingsDisplay(); ;
-
-                    MessageBox.Show("Profile successfully updated");
-                }
-                else
-                {
-                    MessageBox.Show("An error occured while updating the profile. The API key might have been deleted or modified.");
-                }
-
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("An error occured while updating the profile.");
-            }
         }
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
@@ -760,54 +682,6 @@ namespace Elinor
                                ? ClipboardTools.GetSellPrice(_sell, profile)
                                : ClipboardTools.GetBuyPrice(_buy, profile);
             ClipboardTools.SetClipboardWrapper(price);
-        }
-
-        private void CbAdvancedSettingsChecked(object sender, RoutedEventArgs e)
-        {
-            profile.advancedStepSettings = true;
-            gbAdvancedSettings.IsEnabled = true;
-        }
-
-        private void CbAdvancedSettingsUnchecked(object sender, RoutedEventArgs e)
-        {
-            profile.advancedStepSettings = false;
-            gbAdvancedSettings.IsEnabled = false;
-        }
-
-        private void TbSellFractTextChanged(object sender, TextChangedEventArgs e)
-        {
-            double fract;
-            if (double.TryParse(tbSellFract.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out fract))
-            {
-                profile.sellPercentage = fract/100;
-            }
-        }
-
-        private void TbSellThreshTextChanged(object sender, TextChangedEventArgs e)
-        {
-            double thresh;
-            if (double.TryParse(tbSellThresh.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out thresh))
-            {
-                profile.sellThreshold = thresh;
-            }
-        }
-
-        private void TbBuyFractTextChanged(object sender, TextChangedEventArgs e)
-        {
-            double fract;
-            if (double.TryParse(tbBuyFract.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out fract))
-            {
-                profile.buyPercentage = fract/100;
-            }
-        }
-
-        private void TbBuyThreshTextChanged(object sender, TextChangedEventArgs e)
-        {
-            double thresh;
-            if (double.TryParse(tbBuyThresh.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out thresh))
-            {
-                profile.buyThreshold = thresh;
-            }
         }
 
         private void TbCorpStandingTextChanged(object sender, TextChangedEventArgs e)
@@ -997,6 +871,19 @@ namespace Elinor
                 })
             );
             */
+        }
+
+        private void resetCurrentExportValues()
+        {
+            var cdt = new CalculateDataThread(-1, -1, this);
+            var calc = new Thread(cdt.Run);
+            calc.Start();
+
+            lblItemName.Content = "No item selected";
+            lblSell.Content = "0.00 ISK";
+            lblBuy.Content = "0.00 ISK";
+            lblBuyOrderCost.Content = "0.00 ISK";
+            lblSellOrderCost.Content = "0.00 ISK";
         }
     }
 }

@@ -27,7 +27,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D11C75DE46C6D4A095B852B5ED287BBB"
+        "MsmKey" = "8:_D6B46127BB82C63669D926A7F5097DD6"
         "OwnerKey" = "8:_03585DC2BD1048A19B1FB7CB5F6533F2"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D11C75DE46C6D4A095B852B5ED287BBB"
+        "OwnerKey" = "8:_D6B46127BB82C63669D926A7F5097DD6"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -168,14 +168,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D11C75DE46C6D4A095B852B5ED287BBB"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D6B46127BB82C63669D926A7F5097DD6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EVE.Net, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D11C75DE46C6D4A095B852B5ED287BBB"
+                    "_D6B46127BB82C63669D926A7F5097DD6"
                     {
                     "Name" = "8:EVE.Net.dll"
                     "Attributes" = "3:512"
@@ -266,15 +266,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Elinor reloaded"
-        "ProductCode" = "8:{AEB6EBEF-894E-4FD1-81D3-11379F3E79D3}"
-        "PackageCode" = "8:{82E55549-6456-47DB-B1F7-66AFD3C63106}"
+        "ProductCode" = "8:{5A613F8F-9FD6-4080-824A-AE4DBED39F09}"
+        "PackageCode" = "8:{CDA39DCD-B6A2-49D9-9664-C1154618F783}"
         "UpgradeCode" = "8:{F54F50ED-FDA6-4419-B476-E665ADA1FCBC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.8.0"
+        "ProductVersion" = "8:1.9.0"
         "Manufacturer" = "8:Slivo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -849,7 +849,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_03585DC2BD1048A19B1FB7CB5F6533F2"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\Elinor\\obj\\x86\\Release\\Elinor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1022C19006BB4A9C811CB9D8739B72B3"
