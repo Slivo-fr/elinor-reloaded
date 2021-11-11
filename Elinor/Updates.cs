@@ -54,6 +54,9 @@ namespace Elinor
                         var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
                         var currentVersion = new Version(fvi.ProductVersion);
 
+                        Console.WriteLine(currentVersion);
+                        Console.WriteLine(newVersion);
+
                         if (newVersion > currentVersion)
                         {
                             // TODO: Manage new version check
