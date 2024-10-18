@@ -48,7 +48,7 @@ namespace Elinor
 
         internal static double SalesTax(int accounting)
         {
-            return .080*(1 - (accounting*.11));
+            return .045*(1 - (accounting*.11));
         }
 
         internal void Run()
